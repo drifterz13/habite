@@ -1,0 +1,25 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: gears
+#
+#  id          :integer          not null, primary key
+#  atk         :integer
+#  def         :integer
+#  description :string
+#  hp          :integer
+#  title       :string
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+sword:
+  title: Wood sword
+  description: Wood sword for practicing
+  atk: 3
+
+shield:
+  title: Wood shield
+  description: Wood shield for practicing
+  hp: 2
+  def: 3

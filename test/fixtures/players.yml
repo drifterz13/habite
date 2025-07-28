@@ -1,0 +1,44 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: players
+#
+#  id         :integer          not null, primary key
+#  atk        :integer
+#  def        :integer
+#  gold       :integer
+#  hp         :integer
+#  level      :integer
+#  name       :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  user_id    :integer          not null
+#
+# Indexes
+#
+#  index_players_on_user_id  (user_id)
+#
+# Foreign Keys
+#
+#  user_id  (user_id => users.id)
+#
+one:
+  user: one
+  name: Koby
+  level: 1
+  hp: 100
+  atk: 10
+  def: 3
+  gold: 0
+  exp: 0
+
+two:
+  user: two
+  name: Milky
+  level: 2
+  hp: 129
+  atk: 13
+  def: 5
+  gold: 10
+  exp: 130

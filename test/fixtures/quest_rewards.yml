@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: quest_rewards
+#
+#  id              :integer          not null, primary key
+#  rewardable_type :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  quest_id        :integer          not null
+#  rewardable_id   :integer          not null
+#
+# Indexes
+#
+#  index_quest_rewards_on_quest_id    (quest_id)
+#  index_quest_rewards_on_rewardable  (rewardable_type,rewardable_id)
+#
+# Foreign Keys
+#
+#  quest_id  (quest_id => quests.id)
+#
+gold_reward:
+  quest: on_going
+  rewardable: ten_gold
+  rewardable_type: GoldReward
+
+exp_reward:
+  quest: on_going
+  rewardable: ten_exp
+  rewardable_type: ExpReward
+
+gear_reward:
+  quest: on_going
+  rewardable: sword
+  rewardable_type: Gear
+

@@ -1,0 +1,16 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: gold_rewards
+#
+#  id         :integer          not null, primary key
+#  amount     :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+ten_gold:
+  amount: 10
+
+twenty_gold:
+  amount: 20

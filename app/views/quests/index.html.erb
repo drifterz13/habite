@@ -1,0 +1,16 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Quests" %>
+
+<h1>Quests</h1>
+
+<div id="quests">
+  <% @quests.each do |quest| %>
+    <%= render quest %>
+    <p>
+      <%= link_to "Show this quest", quest %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New quest", new_quest_path %>

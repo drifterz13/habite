@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: items
+#
+#  id            :integer          not null, primary key
+#  itemable_type :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  itemable_id   :integer
+#
+sword:
+  itemable_type: Gear
+  itemable: sword
+
+shield:
+  itemable_type: Gear
+  itemable: shield

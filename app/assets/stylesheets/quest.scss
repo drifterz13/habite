@@ -1,3 +1,15 @@
-.quest_card {
-  width: 340px;
+.quest_list {
+  .quest_list_item {
+    &:hover {
+      cursor: pointer;
+      background-color: $blue-100;
+    }
+
+    a {
+      text-decoration: none;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+  }
 }

@@ -3,6 +3,7 @@ class QuestsController < ApplicationController
 
   def index
     @quests = Quest.all
+    @player = Player.preload(:player_tasks).find_by(user: Current.user)
   end
 
   def show

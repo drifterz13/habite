@@ -7,8 +7,8 @@ class QuestsController < ApplicationController
 
   def show
     quest_id = params.expect(:id)
-    @quest = Quest.includes(:tasks, { quest_rewards: :rewardable }).find(quest_id)
-    @player = Player.with_player_tasks.find_by(user_id: Current.user.id)
+    @quest = Quest.preload(:tasks, { quest_rewards: :rewardable }).find(quest_id)
+    @player = Player.preload(:player_tasks).find_by(user_id: Current.user.id)
   end
 
   def new

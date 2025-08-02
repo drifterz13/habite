@@ -33,9 +33,27 @@ class PlayerTest < ActiveSupport::TestCase
     assert_equal "Wood sword", equipped_items.first.item.title
   end
 
-  test "has_completed should returns true" do
+  test "has_completed should returns true for completed task" do
     player = players(:two)
     task = tasks(:completed)
     assert player.has_completed?(task)
+  end
+
+  test "has_completed should returns false for incomplete task " do
+    player = players(:one)
+    task = tasks(:on_going)
+    refute player.has_completed?(task)
+  end
+
+  test "has_completed should returns true for completed quest" do
+    player = players(:two)
+    quest = quests(:completed)
+    assert player.has_completed?(quest)
+  end
+
+  test "has_completed should returns false for incomplete quest " do
+    player = players(:one)
+    quest = quests(:on_going)
+    refute player.has_completed?(quest)
   end
 end

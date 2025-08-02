@@ -22,4 +22,8 @@
 class PlayerTask < ApplicationRecord
   belongs_to :player
   belongs_to :task
+
+  def completed?
+    !!completed_at
+  end
 end

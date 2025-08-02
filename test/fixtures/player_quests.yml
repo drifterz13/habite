@@ -27,5 +27,5 @@ on_going:
 
 completed:
   player: two
-  quest: out_of_time
+  quest: completed
   completed_at: 2025-07-28 10:36:55

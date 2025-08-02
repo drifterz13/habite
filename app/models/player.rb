@@ -35,15 +35,27 @@ class Player < ApplicationRecord
   has_many :tasks, through: :player_tasks
 
   scope :with_items, ->(player_id) { includes(player_items: :item).find(player_id) }
-  scope :with_player_tasks, -> { includes(:player_tasks) }
 
   def equipped_items
     player_items.select { _1.equipped? }
   end
 
-  def has_completed?(task)
-    if task.is_a? Task
-      !!player_tasks.find { task.id = _1.task_id }&.completed_at
+  def has_completed?(quest_or_task)
+    if quest_or_task.is_a? Task
+      has_completed_task? quest_or_task
+    elsif quest_or_task.is_a? Quest
+      has_completed_quest? quest_or_task
     end
+  end
+
+  private
+
+  def has_completed_task?(task)
+    !!player_tasks.find { task.id = _1.task_id }&.completed_at
+  end
+
+  def has_completed_quest?(quest)
+    quest_task_ids = quest.tasks.map(&:id)
+    player_tasks.all? { quest_task_ids.include?(_1.task_id) and _1.completed? }
   end
 end

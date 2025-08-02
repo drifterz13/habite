@@ -24,3 +24,9 @@ on_going:
   start_at: 2025-07-28 10:26:17
   end_at: 2026-07-28 10:26:17
 
+completed:
+  title: Quarterly peer review
+  description: Review peer for quarter 1
+  start_at: 2025-07-28 10:26:17
+  end_at: 2025-07-28 10:26:17
+

@@ -28,3 +28,9 @@ out_of_time:
   title: Daily standup task
   description: To attend daily standup
   quest: out_of_time
+
+completed:
+  title: Peer review
+  description: To review team's performance
+  quest: completed
+

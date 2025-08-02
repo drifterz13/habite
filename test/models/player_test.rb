@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  atk        :integer
 #  def        :integer
+#  exp        :integer          default(0)
 #  gold       :integer
 #  hp         :integer
 #  level      :integer
@@ -30,5 +31,11 @@ class PlayerTest < ActiveSupport::TestCase
 
     assert_equal 1, equipped_items.size
     assert_equal "Wood sword", equipped_items.first.item.title
+  end
+
+  test "has_completed should returns true" do
+    player = players(:two)
+    task = tasks(:completed)
+    assert player.has_completed?(task)
   end
 end

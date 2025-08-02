@@ -7,6 +7,7 @@
 #  id         :integer          not null, primary key
 #  atk        :integer
 #  def        :integer
+#  exp        :integer          default(0)
 #  gold       :integer
 #  hp         :integer
 #  level      :integer

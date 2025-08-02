@@ -1,15 +1,14 @@
 class QuestsController < ApplicationController
-  include CurrentPlayer
-
   before_action :set_quest, only: %i[ edit update destroy ]
-  set_current_player only: %i[ show ]
 
   def index
     @quests = Quest.all
   end
 
   def show
-    @quest = Quest.includes(:tasks, { quest_rewards: :rewardable }).find(params.expect(:id))
+    quest_id = params.expect(:id)
+    @quest = Quest.includes(:tasks, { quest_rewards: :rewardable }).find(quest_id)
+    @player = Player.with_player_tasks.find_by(user_id: Current.user.id)
   end
 
   def new

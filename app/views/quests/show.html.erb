@@ -1,23 +1,38 @@
 <article class="container">
-  <h3 class="mb-4">
-    Quest #<%= @quest.id %>
+  <h3 class="mb-4 text-primary">
+    <%= image_tag "icons/scroll_blue.png", size: "32x32", alt: "scroll icon" %>
+    <u>
+      Quest #<%= @quest.id %>
+    </u>
   </h3>
 
-  <h4 class="fs-5 fw-normal">
+  <h4 class="fs-5 mb-0 text-primary-emphasis">
     <%= @quest.title %>
   </h4>
 
-  <p class="fw-light mb-4"><%= @quest.description %></p>
+  <p class="mb-4 fs-6"><%= @quest.description %></p>
 
   <section>
-    <ol class="list-group list-group-numbered">
-      <% @quest.tasks.each_with_index do |task, idx| %>
+    <ol class="list-group">
+      <% @quest.tasks.each do |task| %>
         <li class="list-group-item d-flex justify-content-between align-items-start">
+          <%= image_tag "icons/task_scroll.png", size: "24x24", alt: "task scroll icon" %>
+
           <div class="ms-2 me-auto">
-            <div class="fw-semibold"><%= task.title %></div>
+            <div class="fw-semibold text-info-emphasis">
+              <%= task.title %>
+            </div>
             <%= task.description %>
           </div>
-          <span class="badge text-bg-primary rounded-pill">14</span>
+          <% if @player.has_completed? task %>
+            <span class="badge text-bg-success rounded-pill">
+              completed
+            </span>
+          <% else %>
+            <span class="badge text-bg-warning rounded-pill">
+              in-progress
+            </span>
+          <% end %>
         </li>
       <% end %>
     </ol>
@@ -34,13 +49,13 @@
           <div class="card-body align-self-center text-center">
             <% if reward.is_gold? %>
               <%= image_tag "icons/gold.png", size: "32x32", alt: "gold icon" %>
-              <div class="card-title"><%= reward.rewardable.amount %></div>
+              <div class="card-title fw-semibold">Gold +<%= reward.rewardable.amount %></div>
             <% elsif reward.is_exp? %>
               <%= image_tag "icons/exp_up.png", size: "32x32", alt: "exp up icon" %>
-              <div class="card-title"><%= reward.rewardable.amount %></div>
+              <div class="card-title fw-semibold">Exp +<%= reward.rewardable.amount %></div>
             <% elsif reward.is_gear? %>
               <%= image_tag "icons/sword_lv1.png", size: "32x32", alt: "gear icon" %>
-              <div class="card-title"><%= reward.rewardable.title %></div>
+              <div class="card-title fw-semibold"><%= reward.rewardable.title %></div>
             <% end %>
           </div>
         </div>

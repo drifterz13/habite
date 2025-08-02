@@ -5,6 +5,7 @@
 #  id         :integer          not null, primary key
 #  atk        :integer
 #  def        :integer
+#  exp        :integer          default(0)
 #  gold       :integer
 #  hp         :integer
 #  level      :integer
@@ -34,8 +35,15 @@ class Player < ApplicationRecord
   has_many :tasks, through: :player_tasks
 
   scope :with_items, ->(player_id) { includes(player_items: :item).find(player_id) }
+  scope :with_player_tasks, -> { includes(:player_tasks) }
 
   def equipped_items
     player_items.select { _1.equipped? }
+  end
+
+  def has_completed?(task)
+    if task.is_a? Task
+      !!player_tasks.find { task.id = _1.task_id }&.completed_at
+    end
   end
 end

@@ -28,5 +28,5 @@ on_going:
 
 completed:
   player: two
-  task: out_of_time
+  task: completed
   completed_at: 2025-07-28 10:39:43

@@ -11,5 +11,20 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+
+    def sign_in(user)
+      Current.session = user.sessions.create!
+
+      ActionDispatch::TestRequest.create.cookie_jar.tap do |cookie_jar|
+        # cookie_jar.signed.permanent[:session_id] = { value: Current.session.id, httponly: true, same_site: :lax }
+        cookie_jar.signed[:session_id] = Current.session.id
+        cookies[:session_id] = cookie_jar[:session_id]
+      end
+    end
+
+    def sign_out
+      Current.session&.destroy!
+      cookies[:session_id] = nil
+    end
   end
 end

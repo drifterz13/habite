@@ -12,10 +12,15 @@
 #
 class Quest < ApplicationRecord
   has_many :tasks, dependent: :destroy
+  has_many :player_quests, dependent: :destroy
   has_many :players, through: :player_quests
   has_many :quest_rewards, dependent: :destroy
 
-  def all_rewards
+  def rewards
+    quest_rewards
+  end
+
+  def rewardables
     quest_rewards.includes(:rewardable).map(&:rewardable)
   end
 end

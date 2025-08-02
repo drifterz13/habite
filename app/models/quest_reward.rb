@@ -21,4 +21,16 @@
 class QuestReward < ApplicationRecord
   belongs_to :quest
   belongs_to :rewardable, polymorphic: true
+
+  def is_exp?
+    rewardable_type == "ExpReward"
+  end
+
+  def is_gold?
+    rewardable_type == "GoldReward"
+  end
+
+  def is_gear?
+    rewardable_type == "Gear"
+  end
 end

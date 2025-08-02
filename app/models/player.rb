@@ -25,9 +25,13 @@ class Player < ApplicationRecord
   belongs_to :user
 
   has_many :player_items, dependent: :destroy
-  has_many :items, through: :player_items, dependent: :destroy
-  has_many :quests, through: :player_quests, dependent: :destroy
-  has_many :tasks, through: :player_tasks, dependent: :destroy
+  has_many :items, through: :player_items
+
+  has_many :player_quests, dependent: :destroy
+  has_many :quests, through: :player_quests
+
+  has_many :player_tasks, dependent: :destroy
+  has_many :tasks, through: :player_tasks
 
   scope :with_items, ->(player_id) { includes(player_items: :item).find(player_id) }
 

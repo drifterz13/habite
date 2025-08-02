@@ -1,0 +1,35 @@
+<div class="dock">
+  <ul class="dock_items">
+    <li>
+      <%= link_to root_path, class: "dock_item" do %>
+        <%= image_tag "icons/tent.png", size: "24x24", alt: "home icon" %>
+        Home
+      <% end %>
+    </li>
+    <li>
+      <%= link_to quests_path, class: "dock_item" do %>
+        <%= image_tag "icons/scroll_blue.png", size: "24x24", alt: "scroll icon" %>
+        Quest
+      <% end %>
+    </li>
+    <li>
+      <%= link_to root_path, class: "dock_item" do %>
+        <%= image_tag "icons/dungeon_portal.png", size: "24x24", alt: "dungeon portal icon" %>
+        Dungeon
+      <% end %>
+    </li>
+    <li>
+      <%= link_to root_path, class: "dock_item" do %>
+        <%= image_tag "icons/treasure.png", size: "24x24", alt: "trasure icon" %>
+        Shop
+      <% end %>
+    </li>
+    <li>
+      <%= link_to root_path, class: "dock_item" do %>
+        <%= image_tag "icons/armor.png", size: "24x24", alt: "armor icon" %>
+        Player
+      <% end %>
+    </li>
+
+  </ul>
+</div>

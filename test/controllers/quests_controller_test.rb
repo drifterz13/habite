@@ -2,7 +2,8 @@ require "test_helper"
 
 class QuestsControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @quest = quests(:one)
+    user = users(:one)
+    sign_in(user)
   end
 
   test "should get index" do
@@ -17,30 +18,37 @@ class QuestsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create quest" do
     assert_difference("Quest.count") do
-      post quests_url, params: { quest: { completed_at: @quest.completed_at, description: @quest.description, end_at: @quest.end_at, start_at: @quest.start_at, title: @quest.title } }
+      start_at = Time.now + 1.days
+      end_at = start_at + 1.days
+
+      post quests_url, params: { quest: { title: "Asking peer to review work", description: "Request for MR review", end_at:, start_at: } }
     end
 
     assert_redirected_to quest_url(Quest.last)
   end
 
   test "should show quest" do
-    get quest_url(@quest)
+    quest = quests(:on_going)
+    get quest_url(quest)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_quest_url(@quest)
+    quest = quests(:on_going)
+    get edit_quest_url(quest)
     assert_response :success
   end
 
   test "should update quest" do
-    patch quest_url(@quest), params: { quest: { completed_at: @quest.completed_at, description: @quest.description, end_at: @quest.end_at, start_at: @quest.start_at, title: @quest.title } }
-    assert_redirected_to quest_url(@quest)
+    quest = quests(:on_going)
+    patch quest_url(quest), params: { quest: { end_at: Time.now + 2.days } }
+    assert_redirected_to quest_url(quest)
   end
 
   test "should destroy quest" do
+    quest = quests(:on_going)
     assert_difference("Quest.count", -1) do
-      delete quest_url(@quest)
+      delete quest_url(quest)
     end
 
     assert_redirected_to quests_url

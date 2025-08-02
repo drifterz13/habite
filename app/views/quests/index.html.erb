@@ -1,16 +1,17 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Quests" %>
 
-<h1>Quests</h1>
+<article>
+  <h1 class="mb-4">Your Quests</h1>
 
-<div id="quests">
-  <% @quests.each do |quest| %>
-    <%= render quest %>
-    <p>
-      <%= link_to "Show this quest", quest %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New quest", new_quest_path %>
+  <div>
+    <% @quests.each do |quest| %>
+      <div class="card quest_card mb-2">
+        <div class="card-body">
+          <h5 class="card-title"><%= quest.title %></h5>
+          <p class="card-text"><%= quest.description %></p>
+          <%= link_to "See quest", quest_path(quest), class: "card-link" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</article>

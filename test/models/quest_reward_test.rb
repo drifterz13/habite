@@ -21,7 +21,18 @@
 require "test_helper"
 
 class QuestRewardTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "is_exp?" do
+    reward = quest_rewards(:exp_reward)
+    assert reward.is_exp?, "Reward type should be ExpReward"
+  end
+
+  test "is_gold?" do
+    reward = quest_rewards(:gold_reward)
+    assert reward.is_gold?, "Reward type should be GoldReward"
+  end
+
+  test "is_gear?" do
+    reward = quest_rewards(:gear_reward)
+    assert reward.is_gear?, "Reward type should be Gear"
+  end
 end

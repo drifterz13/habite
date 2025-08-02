@@ -23,6 +23,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <main class="container mt-4 px-3">
+      <%= yield %>
+    </main>
+    <% unless Current.user.nil? %>
+      <%= render "layouts/dock" %>
+    <% end %>
   </body>
 </html>

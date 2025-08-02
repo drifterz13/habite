@@ -1,0 +1,24 @@
+.dock {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: $primary-bg-subtle;
+
+  .dock_items {
+    margin-bottom: 0;
+    padding: 14px 16px;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    align-items: center;
+  }
+
+  .dock_item {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -34,26 +34,33 @@ class PlayerTest < ActiveSupport::TestCase
   end
 
   test "has_completed should returns true for completed task" do
-    player = players(:two)
+    player = players(:one)
     task = tasks(:completed)
     assert player.has_completed?(task)
   end
 
   test "has_completed should returns false for incomplete task " do
     player = players(:one)
-    task = tasks(:on_going)
+    task = tasks(:in_progress_todo)
     refute player.has_completed?(task)
   end
 
   test "has_completed should returns true for completed quest" do
-    player = players(:two)
+    player = players(:one)
     quest = quests(:completed)
     assert player.has_completed?(quest)
   end
 
   test "has_completed should returns false for incomplete quest " do
     player = players(:one)
-    quest = quests(:on_going)
+    quest = quests(:in_progress)
     refute player.has_completed?(quest)
+  end
+
+  test "has_completed_task_at should return time that task have completed" do
+    player = players(:one)
+    task = tasks(:completed)
+    player_task = player_tasks(:completed)
+    assert_equal player.has_completed_task_at(task), player_task.completed_at
   end
 end

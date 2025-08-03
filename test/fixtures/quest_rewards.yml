@@ -21,17 +21,17 @@
 #  quest_id  (quest_id => quests.id)
 #
 gold_reward:
-  quest: on_going
+  quest: in_progress
   rewardable: ten_gold
   rewardable_type: GoldReward
 
 exp_reward:
-  quest: on_going
+  quest: completed
   rewardable: ten_exp
   rewardable_type: ExpReward
 
 gear_reward:
-  quest: on_going
+  quest: completed
   rewardable: sword
   rewardable_type: Gear
 

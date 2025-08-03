@@ -1,22 +1,25 @@
 <ol class="task_list list-group">
   <% tasks.each do |task| %>
     <li class="task_list_item list-group-item">
-      <%= image_tag "icons/task_scroll.png", size: "24x24", alt: "task scroll icon" %>
+      <%= link_to quest_task_path(task.quest_id, task.id) do %>
+        <%= image_tag "icons/task_scroll.png", size: "24x24", alt: "task scroll icon" %>
 
-      <div class="ms-2 me-auto">
-        <div class="fw-semibold text-info-emphasis">
-          <%= task.title %>
+        <div class="ms-2 me-auto">
+          <div class="fw-semibold text-info-emphasis">
+            <%= task.title %>
+          </div>
+          <%= task.description %>
         </div>
-        <%= task.description %>
-      </div>
-      <% if @player.has_completed? task %>
-        <span class="badge text-bg-success rounded-pill">
-          completed
-        </span>
-      <% else %>
-        <span class="badge text-bg-warning rounded-pill">
-          in-progress
-        </span>
+        <% if @player.has_completed? task %>
+          <span class="badge text-bg-success rounded-pill">
+            completed
+          </span>
+        <% else %>
+          <span class="badge text-bg-warning rounded-pill">
+            in-progress
+          </span>
+        <% end %>
+
       <% end %>
     </li>
   <% end %>

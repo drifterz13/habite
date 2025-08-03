@@ -23,9 +23,9 @@ require "test_helper"
 
 class PlayerQuestTest < ActiveSupport::TestCase
   test "returns completed status" do
-    on_going = player_quests(:on_going)
+    todo = player_quests(:todo)
     completed = player_quests(:completed)
-    assert_not on_going.completed?
-    assert = completed.completed?
+    refute todo.completed?
+    assert completed.completed?
   end
 end

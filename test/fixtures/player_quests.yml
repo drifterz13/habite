@@ -21,11 +21,16 @@
 #  player_id  (player_id => players.id)
 #  quest_id   (quest_id => quests.id)
 #
-on_going:
+
+todo:
   player: one
-  quest: on_going
+  quest: todo
+
+in_progress:
+  player: one
+  quest: in_progress
 
 completed:
-  player: two
+  player: one
   quest: completed
   completed_at: 2025-07-28 10:36:55

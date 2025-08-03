@@ -19,15 +19,21 @@
 #
 #  quest_id  (quest_id => quests.id)
 #
-on_going:
-  title: Review MR task
-  description: To review merge request task
-  quest: on_going
 
-out_of_time:
+todo:
   title: Daily standup task
   description: To attend daily standup
-  quest: out_of_time
+  quest: todo
+
+in_progress_todo:
+  title: Review MR task 2nd day
+  description: To review merge request task
+  quest: in_progress
+
+in_progress_completed:
+  title: Review MR task 1st day
+  description: To review merge request task
+  quest: in_progress
 
 completed:
   title: Peer review

@@ -1,0 +1,17 @@
+<% content_for :title, "Task #{@task.id}" %>
+
+<article class="container">
+  <h3 class="mb-4 d-flex align-items-center gap-2">
+    <%= image_tag "icons/task_scroll.png", size: "32x32", alt: "task scroll icon" %>
+    <%= @task.title %>
+  </h3>
+
+  <section class="mt-4">
+    <p><%= @task.description %></p>
+
+    <% if @player.has_completed? @task %>
+      This task has been completed at:
+      <%= time_ago_in_words(Time.now - @player.has_completed_task_at(@task)) %>
+    <% end %>
+  </section>
+</article>

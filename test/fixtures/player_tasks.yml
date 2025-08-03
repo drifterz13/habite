@@ -21,12 +21,23 @@
 #  player_id  (player_id => players.id)
 #  task_id    (task_id => tasks.id)
 #
-on_going:
+
+todo:
   player: one
-  task: on_going
+  task: todo
   completed_at: nil
 
+in_progress_todo:
+  player: one
+  task: in_progress_todo
+  completed_at: nil
+
+in_progress_completed:
+  player: one
+  task: in_progress_completed
+  completed_at: 2025-07-28 10:39:43
+
 completed:
-  player: two
+  player: one
   task: completed
   completed_at: 2025-07-28 10:39:43

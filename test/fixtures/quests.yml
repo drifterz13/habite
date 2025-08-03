@@ -12,15 +12,15 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-out_of_time:
+todo:
   title: Daily standup
   description: Do daily standup
   start_at: 2025-07-28 10:26:17
   end_at: 2025-07-28 10:26:17
 
-on_going:
-  title: Code review
-  description: Review merge request
+in_progress:
+  title: Code review 3 PRs
+  description: Review three merge request
   start_at: 2025-07-28 10:26:17
   end_at: 2026-07-28 10:26:17
 

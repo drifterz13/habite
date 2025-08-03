@@ -37,7 +37,7 @@ class Player < ApplicationRecord
   scope :with_items, ->(player_id) { includes(player_items: :item).find(player_id) }
 
   def equipped_items
-    player_items.select { _1.equipped? }
+    player_items.select(&:equipped?)
   end
 
   def has_completed?(quest_or_task)
@@ -48,14 +48,25 @@ class Player < ApplicationRecord
     end
   end
 
+  def has_completed_task_at(task)
+    player_task_from(task)&.completed_at
+  end
+
+  def completed_tasks_count(quest)
+    player_tasks.where(task_id: quest.task_ids).where.not(completed_at: nil).count
+  end
+
+  def player_task_from(task)
+    player_tasks.find_by(task_id: task.id)
+  end
+
   private
 
   def has_completed_task?(task)
-    !!player_tasks.find { task.id = _1.task_id }&.completed_at
+    player_task_from(task).completed_at.present?
   end
 
   def has_completed_quest?(quest)
-    quest_task_ids = quest.tasks.map(&:id)
-    player_tasks.all? { quest_task_ids.include?(_1.task_id) and _1.completed? }
+    completed_tasks_count(quest) == quest.task_ids.size
   end
 end

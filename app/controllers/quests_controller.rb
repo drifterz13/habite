@@ -2,14 +2,14 @@ class QuestsController < ApplicationController
   before_action :set_quest, only: %i[ edit update destroy ]
 
   def index
-    @quests = Quest.all
-    @player = Player.preload(:player_tasks).find_by(user: Current.user)
+    @quests = Quest.includes(:tasks).all
+    @player = Player.includes(:player_tasks).find_by(user: Current.user)
   end
 
   def show
     quest_id = params.expect(:id)
-    @quest = Quest.preload(:tasks, { quest_rewards: :rewardable }).find(quest_id)
-    @player = Player.preload(:player_tasks).find_by(user_id: Current.user.id)
+    @quest = Quest.includes(:tasks, { quest_rewards: :rewardable }).find(quest_id)
+    @player = Player.includes(:player_tasks).find_by(user_id: Current.user.id)
   end
 
   def new

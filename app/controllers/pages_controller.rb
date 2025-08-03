@@ -7,6 +7,6 @@ class PagesController < ApplicationController
   private
 
   def set_current_player
-    @player = Player.preload(:quests, :tasks).find_by(user: Current.user)
+    @player = Player.includes(quests: :tasks).find_by(user: Current.user)
   end
 end

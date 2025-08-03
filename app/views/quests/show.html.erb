@@ -13,29 +13,7 @@
   <p class="mb-4 fs-6"><%= @quest.description %></p>
 
   <section>
-    <ol class="list-group">
-      <% @quest.tasks.each do |task| %>
-        <li class="list-group-item d-flex justify-content-between align-items-start">
-          <%= image_tag "icons/task_scroll.png", size: "24x24", alt: "task scroll icon" %>
-
-          <div class="ms-2 me-auto">
-            <div class="fw-semibold text-info-emphasis">
-              <%= task.title %>
-            </div>
-            <%= task.description %>
-          </div>
-          <% if @player.has_completed? task %>
-            <span class="badge text-bg-success rounded-pill">
-              completed
-            </span>
-          <% else %>
-            <span class="badge text-bg-warning rounded-pill">
-              in-progress
-            </span>
-          <% end %>
-        </li>
-      <% end %>
-    </ol>
+    <%= render "tasks/task_list", tasks: @quest.tasks, player: @player %>
   </section>
 </article>
 

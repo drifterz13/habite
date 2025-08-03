@@ -13,3 +13,17 @@
     }
   }
 }
+
+.task_list {
+  .task_list_item {
+    text-decoration: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $blue-100;
+    }
+  }
+}

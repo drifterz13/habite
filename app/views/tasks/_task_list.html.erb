@@ -1,9 +1,8 @@
 <ol class="task_list list-group">
   <% tasks.each do |task| %>
     <li class="task_list_item list-group-item">
-      <%= link_to quest_task_path(task.quest_id, task.id) do %>
+      <%= link_to quest_task_path(task.quest_id, task.id), data: { turbo_frame: "task_detail" } do %>
         <%= image_tag "icons/task_scroll.png", size: "24x24", alt: "task scroll icon" %>
-
         <div class="ms-2 me-auto">
           <div class="fw-semibold text-info-emphasis">
             <%= task.title %>
@@ -19,8 +18,31 @@
             in-progress
           </span>
         <% end %>
-
       <% end %>
     </li>
   <% end %>
 </ol>
+
+<div
+  class="modal"
+  tabindex="-1"
+  data-controller="modal"
+  data-action="turbo:frame-load->modal#show"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Task details</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <%= turbo_frame_tag "task_detail" %>
+      </div>
+    </div>
+  </div>
+</div>

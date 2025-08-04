@@ -18,4 +18,9 @@ class User < ApplicationRecord
   has_one :player, dependent: :destroy
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
+
+  def admin?
+    # TODO: Build role management feature.
+    email_address.start_with "admin"
+  end
 end

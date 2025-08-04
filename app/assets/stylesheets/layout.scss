@@ -1,3 +1,9 @@
+$dock-height: 78px;
+
+.main_layout {
+  height: calc(100vh - $dock-height);
+}
+
 .dock {
   position: fixed;
   bottom: 0;

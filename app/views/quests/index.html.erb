@@ -1,12 +1,22 @@
 <% content_for :title, "Quests" %>
 
 <article class="container">
-  <h3 class="mb-4 d-flex align-items-center gap-2">
-    <%= image_tag "icons/green_flag.png", size: "32x32", alt: "green flag icon" %>
-    All Quests
-  </h3>
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="d-flex align-items-center gap-2">
+      <%= image_tag "icons/green_flag.png", size: "32x32", alt: "green flag icon" %>
+      All Quests
+    </h3>
+
+    <div>
+      <%= link_to new_quest_path, class: "btn btn-primary" do %>
+        <i class="bi bi-plus-lg me-1"></i>
+        Create quest
+      <% end %>
+    </div>
+  </div>
 
   <section class="mt-4">
     <%= render "quests/quest_list", quests: @quests, player: @player %>
+
   </section>
 </article>

@@ -2,19 +2,24 @@
 
 <%= turbo_frame_tag "task_detail" do %>
   <article class="container">
-    <h3 class="mb-4 d-flex align-items-center gap-2">
-      <%= image_tag "icons/task_scroll.png", size: "32x32", alt: "task scroll icon" %>
+    <h4 class="d-flex align-items-center gap-2">
+      <%= image_tag "icons/task_scroll.png", size: "24x24", alt: "task scroll icon" %>
       <%= @task.title %>
-    </h3>
+    </h4>
 
-    <section class="mt-4">
+    <section>
       <p><%= @task.description %></p>
 
+      <%= button_tag "Complete quest",
+      class: "btn btn-primary",
+      disabled: @player.has_completed?(@task) %>
+
       <% if @player.has_completed? @task %>
-        This task has been completed
-        <%= time_ago_in_words @player.has_completed_task_at(@task) %>
-      <% else %>
-        <%= button_tag "Complete quest", class: "btn btn-primary" %>
+        <p class="fw-light fs-6">
+          completed at:
+          <%= time_ago_in_words @player.has_completed_task_at(@task) %>
+          ago
+        </p>
       <% end %>
     </section>
   </article>

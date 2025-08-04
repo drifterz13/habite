@@ -16,11 +16,17 @@ class Quest < ApplicationRecord
   has_many :players, through: :player_quests
   has_many :quest_rewards, dependent: :destroy
 
+  validates :title, length: { maximum: 100 }, presence: true
+
   def rewards
     quest_rewards
   end
 
   def rewardables
     quest_rewards.includes(:rewardable).map(&:rewardable)
+  end
+
+  def end?
+    end_at < Time.now
   end
 end

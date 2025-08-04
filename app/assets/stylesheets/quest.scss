@@ -1,3 +1,9 @@
+.quest_options {
+  .dropdown-toggle::after {
+    display: none !important;
+  }
+}
+
 .quest_list {
   .quest_list_item {
     &:hover {

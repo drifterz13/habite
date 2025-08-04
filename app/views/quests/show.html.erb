@@ -1,10 +1,14 @@
 <article class="container">
-  <h3 class="mb-4 text-primary">
-    <%= image_tag "icons/scroll_blue.png", size: "32x32", alt: "scroll icon" %>
-    <u>
-      Quest #<%= @quest.id %>
-    </u>
-  </h3>
+  <div class="d-flex justify-content-between align-items-baseline mb-4">
+    <h3 class="text-primary">
+      <%= image_tag "icons/scroll_blue.png", size: "32x32", alt: "scroll icon" %>
+      <u>
+        Quest #<%= @quest.id %>
+      </u>
+    </h3>
+
+    <%= render "menu", quest: @quest %>
+  </div>
 
   <h4 class="fs-5 mb-0 text-primary-emphasis">
     <%= @quest.title %>

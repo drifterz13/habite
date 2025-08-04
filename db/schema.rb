@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_28_125435) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_04_020030) do
   create_table "exp_rewards", force: :cascade do |t|
     t.integer "amount"
     t.datetime "created_at", null: false
@@ -118,6 +118,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_28_125435) do
     t.integer "quest_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_at"
+    t.datetime "end_at"
     t.index ["quest_id"], name: "index_tasks_on_quest_id"
   end
 

@@ -1,7 +1,8 @@
 <%= form_with(model: quest) do |form| %>
   <% if quest.errors.any? %>
     <div style="color: red">
-      <h2><%= pluralize(quest.errors.count, "error") %> prohibited this quest from being saved:</h2>
+      <h2><%= pluralize(quest.errors.count, "error") %>
+        prohibited this quest from being saved:</h2>
 
       <ul>
         <% quest.errors.each do |error| %>
@@ -11,32 +12,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="mb-3">
+    <%= form.label :title, class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control" %>
   </div>
 
   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.textarea :description %>
-  </div>
-
-  <div>
-    <%= form.label :completed_at, style: "display: block" %>
-    <%= form.datetime_field :completed_at %>
-  </div>
-
-  <div>
-    <%= form.label :start_at, style: "display: block" %>
-    <%= form.datetime_field :start_at %>
-  </div>
-
-  <div>
-    <%= form.label :end_at, style: "display: block" %>
-    <%= form.datetime_field :end_at %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit "Save quest", class: "btn btn-primary" %>
   </div>
 <% end %>

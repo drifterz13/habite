@@ -1,11 +1,8 @@
 <% content_for :title, "New quest" %>
 
-<h1>New quest</h1>
+<article class="container">
+  <div class="d-flex flex-column gap-2">
+    <h1>New quest</h1>
 
-<%= render "form", quest: @quest %>
-
-<br>
-
-<div>
-  <%= link_to "Back to quests", quests_path %>
-</div>
+    <%= render "form", quest: @quest %>
+</article>

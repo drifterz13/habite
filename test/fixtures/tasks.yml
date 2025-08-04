@@ -6,6 +6,8 @@
 #
 #  id          :integer          not null, primary key
 #  description :text
+#  end_at      :datetime
+#  start_at    :datetime
 #  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

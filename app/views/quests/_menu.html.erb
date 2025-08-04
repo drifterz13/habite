@@ -1,0 +1,26 @@
+<div
+  class="quest_options dropdown"
+  data-controller="menu"
+  data-action="click->menu#toggle"
+>
+  <button
+    class="btn btn-sm btn-light dropdown-toggle"
+    type="button"
+    data-bs-toggle="dropdown"
+    data-menu-target="toggle"
+    aria-expanded="false"
+  >
+    <i class="bi bi-three-dots"></i>
+  </button>
+  <ul class="dropdown-menu text-center">
+    <li>
+      <%= link_to quest_path(quest), 
+        method: :delete, 
+        data: { turbo_method: :delete, turbo_confirm: "Woah! Are you sure?" },
+        class: "text-danger text-decoration-none" do %>
+        <i class="bi bi-trash me-1"></i>
+        Delete quest
+      <% end %>
+    </li>
+  </ul>
+</div>

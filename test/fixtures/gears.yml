@@ -14,12 +14,12 @@
 #  updated_at  :datetime         not null
 #
 sword:
-  title: Wood sword
-  description: Wood sword for practicing
+  title: Wooden Sword
+  description: Wooden sword for practicing
   atk: 3
 
 shield:
-  title: Wood shield
-  description: Wood shield for practicing
+  title: Wooden Shield
+  description: Wooden shield for practicing
   hp: 2
   def: 3

@@ -30,7 +30,7 @@ class PlayerTest < ActiveSupport::TestCase
     equipped_items = player.equipped_items
 
     assert_equal 1, equipped_items.size
-    assert_equal "Wood sword", equipped_items.first.item.title
+    assert_equal "Wooden Sword", equipped_items.first.item.title
   end
 
   test "has_completed should returns true for completed task" do

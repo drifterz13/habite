@@ -13,7 +13,9 @@
 require "test_helper"
 
 class QuestTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "randomize rewards after quest creation" do
+    assert_difference -> { QuestReward.count }, 3 do
+      Quest.create! title: "My Quest"
+    end
+  end
 end

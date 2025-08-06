@@ -16,17 +16,20 @@ class Quest < ApplicationRecord
   has_many :players, through: :player_quests
   has_many :quest_rewards, dependent: :destroy
 
+  after_create :randomize_rewards
+
   validates :title, length: { maximum: 100 }, presence: true
 
   def rewards
     quest_rewards
   end
 
-  def rewardables
-    quest_rewards.includes(:rewardable).map(&:rewardable)
-  end
-
   def end?
     end_at < Time.now
+  end
+
+  # TODO: Add ablility to ensure that item should be drop once.
+  def randomize_rewards
+    3.times.each { QuestReward.randomize_reward_for! self }
   end
 end

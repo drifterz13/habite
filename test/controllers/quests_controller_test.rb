@@ -28,25 +28,25 @@ class QuestsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show quest" do
-    quest = quests(:on_going)
+    quest = quests(:in_progress)
     get quest_url(quest)
     assert_response :success
   end
 
   test "should get edit" do
-    quest = quests(:on_going)
+    quest = quests(:in_progress)
     get edit_quest_url(quest)
     assert_response :success
   end
 
   test "should update quest" do
-    quest = quests(:on_going)
+    quest = quests(:in_progress)
     patch quest_url(quest), params: { quest: { end_at: Time.now + 2.days } }
     assert_redirected_to quest_url(quest)
   end
 
   test "should destroy quest" do
-    quest = quests(:on_going)
+    quest = quests(:in_progress)
     assert_difference("Quest.count", -1) do
       delete quest_url(quest)
     end

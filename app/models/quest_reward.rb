@@ -22,6 +22,8 @@ class QuestReward < ApplicationRecord
   belongs_to :quest
   belongs_to :rewardable, polymorphic: true
 
+  REWARD_TYPES = %w[ GoldReward ExpReward Gear ].freeze
+
   def is_exp?
     rewardable_type == "ExpReward"
   end
@@ -32,5 +34,10 @@ class QuestReward < ApplicationRecord
 
   def is_gear?
     rewardable_type == "Gear"
+  end
+
+  def self.randomize_reward_for!(quest)
+    reward_class = REWARD_TYPES.sample.constantize
+    create! quest:, rewardable: reward_class.randomize!
   end
 end

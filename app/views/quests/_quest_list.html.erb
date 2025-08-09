@@ -9,7 +9,7 @@
           </div>
           <%= quest.description %>
         </div>
-        <% if player.has_completed? quest %>
+        <% if player.has_completed_task? quest %>
           <span class="badge text-bg-success rounded-pill">
             completed
           </span>

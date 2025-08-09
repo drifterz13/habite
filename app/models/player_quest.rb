@@ -23,7 +23,14 @@ class PlayerQuest < ApplicationRecord
   belongs_to :player
   belongs_to :quest
 
+  scope :completed, -> { where.not(completed_at: nil) }
+
   def completed?
     !!completed_at
+  end
+
+  def complete
+    self.completed_at = Time.now
+    save
   end
 end

@@ -11,6 +11,8 @@
 #  updated_at  :datetime         not null
 #
 class Quest < ApplicationRecord
+  include Completable
+
   has_many :tasks, dependent: :destroy
   has_many :player_quests, dependent: :destroy
   has_many :players, through: :player_quests
@@ -20,12 +22,18 @@ class Quest < ApplicationRecord
 
   validates :title, length: { maximum: 100 }, presence: true
 
-  def rewards
-    quest_rewards
+  def completed_by?(player)
+    player_quests.where(player:).completed.exists?
   end
 
-  def end?
-    end_at < Time.now
+  def all_tasks_completed_by?(player)
+    tasks.all? do |task|
+      player.player_tasks.where(task:).completed.exists?
+    end
+  end
+
+  def rewards
+    quest_rewards
   end
 
   def randomize_rewards

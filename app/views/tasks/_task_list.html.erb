@@ -9,7 +9,7 @@
           </div>
           <%= task.description %>
         </div>
-        <% if @player.has_completed? task %>
+        <% if @player.has_completed_task? task %>
           <span class="badge text-bg-success rounded-pill">
             completed
           </span>

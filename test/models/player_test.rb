@@ -33,41 +33,57 @@ class PlayerTest < ActiveSupport::TestCase
     assert_equal "Wooden Sword", equipped_items.first.item.title
   end
 
-  test "has_completed should returns true for completed task" do
+  test "has_completed_task? should returns true for completed task" do
     player = players(:one)
     task = tasks(:completed)
-    assert player.has_completed?(task)
+    assert player.has_completed_task?(task)
   end
 
-  test "has_completed should returns false for incomplete task " do
+  test "has_completed_task? should returns false for incomplete task " do
     player = players(:one)
     task = tasks(:in_progress_todo)
-    refute player.has_completed?(task)
+    refute player.has_completed_task?(task)
   end
 
-  test "has_completed should returns true for completed quest" do
+  test "has_completed_quest? should returns true for completed quest" do
     player = players(:one)
     quest = quests(:completed)
-    assert player.has_completed?(quest)
+    assert player.has_completed_quest?(quest)
   end
 
-  test "has_completed should returns false for incomplete quest " do
+  test "has_completed_quest? should returns false for incompleted quest" do
     player = players(:one)
     quest = quests(:in_progress)
-    refute player.has_completed?(quest)
+    refute player.has_completed_quest?(quest)
   end
 
-  test "has_completed_at should return time that task have completed" do
+  test "can_complete_quest? should returns true for completable quest" do
     player = players(:one)
-    task = tasks(:completed)
-    player_task = player_tasks(:completed)
-    assert_equal player.has_completed_at(task), player_task.completed_at
+    quest = quests(:ready_to_complete)
+    assert player.can_complete_quest?(quest)
   end
 
-  test "has_completed_at should return time that quest have completed" do
+  test "can_complete_quest? should returns false for incompleted quest" do
+    player = players(:one)
+    quest = quests(:in_progress)
+    refute player.can_complete_quest?(quest)
+  end
+
+  test "can_complete_quest? should returns false for completed quest" do
     player = players(:one)
     quest = quests(:completed)
-    player_quest = player_quests(:completed)
-    assert_equal player.has_completed_at(quest), player_quest.completed_at
+    refute player.can_complete_quest?(quest)
+  end
+
+  test "can_complete_task? should returns true for completable task" do
+    player = players(:one)
+    task = tasks(:in_progress_todo)
+    assert player.can_complete_task?(task)
+  end
+
+  test "can_complete_task? should returns false for completed task" do
+    player = players(:one)
+    task = tasks(:in_progress_completed)
+    refute player.can_complete_task?(task)
   end
 end

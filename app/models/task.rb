@@ -20,6 +20,12 @@
 #  quest_id  (quest_id => quests.id)
 #
 class Task < ApplicationRecord
+  include Completable
+
   belongs_to :quest
   has_many :player_tasks, dependent: :destroy
+
+  def completed_by?(player)
+    player_tasks.where(player:).where.not(completed_at: nil).exists?
+  end
 end

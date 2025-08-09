@@ -40,41 +40,24 @@ class Player < ApplicationRecord
     player_items.select(&:equipped?)
   end
 
-  def has_completed?(quest_or_task)
-    if quest_or_task.is_a? Task
-      has_completed_task? quest_or_task
-    elsif quest_or_task.is_a? Quest
-      has_completed_quest? quest_or_task
-    end
+  def complete_quest(quest)
+    player_quest = player_quests.find quest.id
+    can_complete? quest and player_quest&.complete
   end
 
-  def has_completed_at(quest_or_task)
-    if quest_or_task.is_a? Task
-      has_completed_task_at quest_or_task
-    elsif quest_or_task.is_a? Quest
-      has_completed_quest_at quest_or_task
-    end
+  def can_complete_task?(task)
+    task.in_completable_period? and !task.completed_by?(self)
   end
 
-  def completed_tasks_count(quest)
-    player_tasks.where(task_id: quest.task_ids).where.not(completed_at: nil).count
-  end
-
-  private
-
-  def has_completed_quest_at(quest)
-    player_quests.find_by(quest_id: quest.id)&.completed_at
-  end
-
-  def has_completed_task_at(task)
-    player_tasks.find_by(task_id: task.id)&.completed_at
-  end
-
-  def has_completed_task?(task)
-    player_tasks.find_by(task_id: task.id)&.completed_at.present?
+  def can_complete_quest?(quest)
+    quest.in_completable_period? and quest.all_tasks_completed_by?(self) and !quest.completed_by?(self)
   end
 
   def has_completed_quest?(quest)
-    completed_tasks_count(quest) == quest.task_ids.size and has_completed_at(quest)
+    quest.all_tasks_completed_by?(self) and quest.completed_by?(self)
+  end
+
+  def has_completed_task?(task)
+    task.completed_by?(self)
   end
 end

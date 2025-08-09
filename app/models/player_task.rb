@@ -23,6 +23,8 @@ class PlayerTask < ApplicationRecord
   belongs_to :player
   belongs_to :task
 
+  scope :completed, -> { where.not(completed_at: nil) }
+
   def completed?
     !!completed_at
   end

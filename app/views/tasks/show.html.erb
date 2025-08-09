@@ -10,14 +10,14 @@
     <section>
       <p><%= @task.description %></p>
 
-      <%= button_tag "Complete quest",
+      <%= button_tag "Complete Task",
       class: "btn btn-primary",
-      disabled: @player.has_completed?(@task) %>
+      disabled: !@player.can_complete_task?(@task) %>
 
-      <% if @player.has_completed? @task %>
+      <% if @player.has_completed_task? @task %>
         <p class="fw-light fs-6">
           completed at:
-          <%= time_ago_in_words @player.has_completed_at(@task) %>
+          <%= time_ago_in_words @player.player_tasks.completed_time_of(@task) %>
           ago
         </p>
       <% end %>

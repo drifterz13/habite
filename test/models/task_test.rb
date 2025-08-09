@@ -22,7 +22,21 @@
 require "test_helper"
 
 class TaskTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "set_default_task_period for unspecify start_at and end_at task" do
+    quest = quests(:todo)
+    task = Task.create! quest:, title: "My Task"
+
+    assert task.start_at.present?
+    assert task.end_at.present?
+  end
+
+  test "in_completable_period? given task is in completion period" do
+    task = tasks(:in_progress_todo)
+    assert task.in_completable_period?
+  end
+
+  test "in_completable_period? given task is not in completion period" do
+    task = tasks(:completed)
+    refute task.in_completable_period?
+  end
 end

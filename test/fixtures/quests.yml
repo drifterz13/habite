@@ -15,18 +15,30 @@
 todo:
   title: Daily standup
   description: Do daily standup
-  start_at: 2025-07-28 10:26:17
-  end_at: 2025-07-28 10:26:17
+  start_at: 2025-01-01 10:26:17
+  end_at: 2025-12-31 10:26:17
 
 in_progress:
   title: Code review 3 PRs
-  description: Review three merge request
-  start_at: 2025-07-28 10:26:17
-  end_at: 2026-07-28 10:26:17
+  description: Review three merge requests
+  start_at: 2025-01-01 10:26:17
+  end_at: 2025-12-31 10:26:17
+
+ready_to_complete:
+  title: Code review 2 PRs
+  description: Review two merge requests
+  start_at: 2025-01-01 10:26:17
+  end_at: 2025-12-31 10:26:17
 
 completed:
   title: Quarterly peer review
   description: Review peer for quarter 1
-  start_at: 2025-07-28 10:26:17
-  end_at: 2025-07-28 10:26:17
+  start_at: 2025-01-01 10:26:17
+  end_at: 2025-12-31 10:26:17
+
+on_going_without_tasks:
+  title: Install Oracle 19c
+  description: To install oracle 19c on local machine
+  start_at: 2025-01-01 10:26:17
+  end_at: 2025-12-31 10:26:17
 

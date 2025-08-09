@@ -48,25 +48,33 @@ class Player < ApplicationRecord
     end
   end
 
-  def has_completed_task_at(task)
-    player_task_from(task)&.completed_at
+  def has_completed_at(quest_or_task)
+    if quest_or_task.is_a? Task
+      has_completed_task_at quest_or_task
+    elsif quest_or_task.is_a? Quest
+      has_completed_quest_at quest_or_task
+    end
   end
 
   def completed_tasks_count(quest)
     player_tasks.where(task_id: quest.task_ids).where.not(completed_at: nil).count
   end
 
-  def player_task_from(task)
-    player_tasks.find_by(task_id: task.id)
-  end
-
   private
 
+  def has_completed_quest_at(quest)
+    player_quests.find_by(quest_id: quest.id)&.completed_at
+  end
+
+  def has_completed_task_at(task)
+    player_tasks.find_by(task_id: task.id)&.completed_at
+  end
+
   def has_completed_task?(task)
-    player_task_from(task).completed_at.present?
+    player_tasks.find_by(task_id: task.id)&.completed_at.present?
   end
 
   def has_completed_quest?(quest)
-    completed_tasks_count(quest) == quest.task_ids.size
+    completed_tasks_count(quest) == quest.task_ids.size and has_completed_at(quest)
   end
 end

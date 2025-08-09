@@ -57,10 +57,17 @@ class PlayerTest < ActiveSupport::TestCase
     refute player.has_completed?(quest)
   end
 
-  test "has_completed_task_at should return time that task have completed" do
+  test "has_completed_at should return time that task have completed" do
     player = players(:one)
     task = tasks(:completed)
     player_task = player_tasks(:completed)
-    assert_equal player.has_completed_task_at(task), player_task.completed_at
+    assert_equal player.has_completed_at(task), player_task.completed_at
+  end
+
+  test "has_completed_at should return time that quest have completed" do
+    player = players(:one)
+    quest = quests(:completed)
+    player_quest = player_quests(:completed)
+    assert_equal player.has_completed_at(quest), player_quest.completed_at
   end
 end

@@ -28,8 +28,10 @@ class Quest < ApplicationRecord
     end_at < Time.now
   end
 
-  # TODO: Add ablility to ensure that item should be drop once.
   def randomize_rewards
-    3.times.each { QuestReward.randomize_reward_for! self }
+    3.times.each do
+      quest_reward = self.quest_rewards.build
+      quest_reward.randomize!
+    end
   end
 end

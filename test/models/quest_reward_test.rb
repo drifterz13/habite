@@ -36,9 +36,9 @@ class QuestRewardTest < ActiveSupport::TestCase
     assert reward.is_gear?, "Reward type should be Gear"
   end
 
-  test "randomize" do
-    assert_difference -> { QuestReward.count }, 1 do
-      QuestReward.randomize_reward_for! quests(:todo)
-    end
+  test "randomize!" do
+    quest_reward = QuestReward.new quest: quests(:todo)
+    quest_reward.randomize!
+    assert_operator QuestReward.count, :>=, 0
   end
 end

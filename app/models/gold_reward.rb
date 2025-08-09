@@ -9,15 +9,16 @@
 #
 class GoldReward < ApplicationRecord
   has_one :quest_reward, as: :rewardable, dependent: :destroy
-  validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :amount, presence: true, numericality: { greater_than: 1 }
 
-  MAX_RAND_AMOUNT = 10
+  MIN_GOLD = 1
+  MAX_GOLD = 10
 
   def apply_to(player)
     player.update!(gold: amount)
   end
 
   def self.randomize!
-    create! amount: rand(GoldReward::MAX_RAND_AMOUNT)
+    create! amount: rand(MIN_GOLD..MAX_GOLD)
   end
 end

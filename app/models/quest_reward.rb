@@ -22,7 +22,12 @@ class QuestReward < ApplicationRecord
   belongs_to :quest
   belongs_to :rewardable, polymorphic: true
 
-  REWARD_TYPES = %w[ GoldReward ExpReward Gear ].freeze
+  REWARD_TYPES = {
+    "ExpReward": 0.5,
+    "GoldReward": 0.5,
+    "NoneReward": 0.2,
+    "Gear": 0.1
+  }.freeze
 
   def is_exp?
     rewardable_type == "ExpReward"
@@ -36,8 +41,29 @@ class QuestReward < ApplicationRecord
     rewardable_type == "Gear"
   end
 
-  def self.randomize_reward_for!(quest)
-    reward_class = REWARD_TYPES.sample.constantize
-    create! quest:, rewardable: reward_class.randomize!
+  def randomize!
+    reward_type = randomize_reward_type.to_s
+    reward_class = reward_type.constantize
+
+    self.rewardable = reward_class.randomize!
+    self.save! unless rewardable.nil?
+  end
+
+  private
+
+  def normalized_reward_types
+    weight = REWARD_TYPES.values.sum
+
+    REWARD_TYPES.map do |reward_type, percentage|
+      [ reward_type, (percentage / weight).round(2) ]
+    end.to_h
+  end
+
+  def randomize_reward_type
+    drop_chance = rand
+
+    normalized_reward_types.find do |reward_type, percentage|
+      reward_type if percentage <= drop_chance
+    end.first
   end
 end

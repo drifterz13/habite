@@ -86,4 +86,41 @@ class PlayerTest < ActiveSupport::TestCase
     task = tasks(:in_progress_completed)
     refute player.can_complete_task?(task)
   end
+
+  test "has_started_quest? should returns true for quest that player has started" do
+    player = players(:one)
+    quest = quests(:in_progress)
+    assert player.has_started_quest?(quest)
+  end
+
+  test "has_started_quest? should returns false for quest that player has not started" do
+    player = players(:one)
+    quest = quests(:without_player)
+    refute player.has_started_quest?(quest)
+  end
+
+  test "start_quest" do
+    player = players(:two)
+    quest = quests(:without_player)
+
+    assert_difference -> { PlayerQuest.where(quest:, player:).count }, 1 do
+      player.start_quest!(quest)
+    end
+  end
+
+  test "complete_quest" do
+    player =  players(:one)
+    quest = quests(:ready_to_complete)
+    player.complete_quest quest
+
+    assert PlayerQuest.find_by(player:, quest:).completed?
+  end
+
+  test "complete_task" do
+    player = players(:one)
+    task = tasks(:in_progress_todo)
+    player.complete_task task
+
+    assert PlayerTask.find_by(player:, task:).completed?
+  end
 end

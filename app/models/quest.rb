@@ -22,6 +22,10 @@ class Quest < ApplicationRecord
 
   validates :title, length: { maximum: 100 }, presence: true
 
+  def owned_by?(player)
+    player_quests.where(quest: self).exists?
+  end
+
   def completed_by?(player)
     player_quests.where(player:).completed.exists?
   end

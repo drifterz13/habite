@@ -40,21 +40,37 @@ class Player < ApplicationRecord
     player_items.select(&:equipped?)
   end
 
+  def has_started_quest?(quest)
+    quest.owned_by?(self)
+  end
+
+  def start_quest!(quest)
+    has_started_quest?(quest) || player_quests.create!(player: self, quest:)
+  end
+
   def complete_quest(quest)
-    player_quest = player_quests.find quest.id
-    can_complete? quest and player_quest&.complete
+    player_quest = player_quests.find_by(quest:)
+    can_complete_quest?(quest) && player_quest.complete
+  end
+
+  def complete_task(task)
+    player_task = player_tasks.find_by(task:)
+    can_complete_task?(task) && player_task.complete
   end
 
   def can_complete_task?(task)
-    task.in_completable_period? and !task.completed_by?(self)
+    task.in_completable_period? && !task.completed_by?(self)
   end
 
   def can_complete_quest?(quest)
-    quest.in_completable_period? and quest.all_tasks_completed_by?(self) and !quest.completed_by?(self)
+    has_started_quest?(quest) &&
+    quest.in_completable_period? &&
+    quest.all_tasks_completed_by?(self) &&
+    !quest.completed_by?(self)
   end
 
   def has_completed_quest?(quest)
-    quest.all_tasks_completed_by?(self) and quest.completed_by?(self)
+    quest.all_tasks_completed_by?(self) && quest.completed_by?(self)
   end
 
   def has_completed_task?(task)

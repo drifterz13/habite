@@ -6,7 +6,15 @@ module Completable
   end
 
   def in_completable_period?
-    in_completion_period? or end_at.nil?
+    in_completion_period? or endless?
+  end
+
+  def endless?
+    end_at.nil?
+  end
+
+  def has_ended?
+    end_at && Time.now > end_at
   end
 
   private
@@ -22,7 +30,7 @@ module Completable
   end
 
   def has_completion_period?
-    self.start_at.present? && self.end_at.present?
+    start_at.present? && end_at.present?
   end
 
   def set_default_period

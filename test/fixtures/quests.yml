@@ -42,3 +42,9 @@ on_going_without_tasks:
   start_at: 2025-01-01 10:26:17
   end_at: 2025-12-31 10:26:17
 
+without_player:
+  title: Install Bit-Defender
+  description: To install Bit-Defender on local machine
+  start_at: 2025-01-01 10:26:17
+  end_at: 2025-12-31 10:26:17
+

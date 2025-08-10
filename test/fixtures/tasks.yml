@@ -53,3 +53,10 @@ completed:
   end_at: 2025-02-01 10:26:17
   quest: completed
 
+without_player:
+  title: Contact IT support team
+  description: To get bit-defender program from IT support team
+  start_at: 2025-01-01 10:26:17
+  end_at: 2025-12-31 10:26:17
+  quest: without_player
+

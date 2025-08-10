@@ -28,4 +28,9 @@ class PlayerTask < ApplicationRecord
   def completed?
     !!completed_at
   end
+
+  def complete
+    self.completed_at = Time.now
+    save
+  end
 end

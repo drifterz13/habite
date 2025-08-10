@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
   resources :quests do
-    resources :tasks, only: %w[ show ]
-  end
+    resources :tasks, only: %w[ show ] do
+      patch :complete, on: :member, to: "players/task_completions#complete"
+    end
 
-  namespace :players do
-    patch "complete_quest/:quest_id", to: "quest_completions/complete", as: "complete_quest"
+    patch :complete, on: :member, to: "players/quest_completions#complete"
+    post :start, on: :member, to: "players/quest_starters#start"
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

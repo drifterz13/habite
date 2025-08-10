@@ -1,5 +1,5 @@
 <article class="container">
-  <div class="d-flex justify-content-between align-items-baseline mb-4">
+  <div class="d-flex justify-content-between align-items-baseline mb-2">
     <h3 class="text-primary">
       <%= image_tag "icons/scroll_blue.png", size: "32x32", alt: "scroll icon" %>
       <u>
@@ -8,6 +8,15 @@
     </h3>
 
     <%= render "menu", quest: @quest %>
+  </div>
+
+  <div class="mb-4">
+    <% if @quest.has_ended? %>
+      <p class="text-danger">Quest already end</p>
+    <% elsif !@quest.endless? %>
+      <p class="text-warning">Quest end in
+        <%= distance_of_time_in_words(Time.now, @quest.end_at) %></p>
+    <% end %>
   </div>
 
   <h4 class="fs-5 mb-0 text-primary-emphasis">
@@ -30,11 +39,17 @@
 </article>
 
 <div class="d-flex justify-content-end mt-4">
-  <%= button_to "Complete Quest",
-  players_complete_quest_path(@quest),
-  class: "btn btn-primary",
-  disabled: !@player.can_complete_quest?(@quest),
-  data: {
-    turbo_method: :patch,
-  } %>
+  <% if @player.has_started_quest?(@quest) %>
+    <%= button_to "Complete Quest",
+    complete_quest_path(@quest),
+    method: :patch,
+    class: "btn btn-primary",
+    disabled: !@player.can_complete_quest?(@quest) %>
+
+  <% else %>
+    <%= button_to "Start Quest",
+    start_quest_path(@quest),
+    class: "btn btn-primary",
+    method: :post %>
+  <% end %>
 </div>

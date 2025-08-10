@@ -30,14 +30,14 @@ in_progress:
   player: one
   quest: in_progress
 
+ready_to_complete:
+  player: one
+  quest: ready_to_complete
+
 completed:
   player: one
   quest: completed
   completed_at: 2025-07-28 10:36:55
-
-ready_to_complete:
-  player: one
-  quest: ready_to_complete
 
 on_going_without_tasks:
   player: one

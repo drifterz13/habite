@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :session
   resources :passwords, param: :token
   resources :quests do
-    resources :tasks, only: %w[ show ] do
+    resources :tasks, only: %w[ show new ] do
       patch :complete, on: :member, to: "player/task_completions#complete"
     end
 
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     post :start, on: :member, to: "player/quest_starters#start"
   end
 
-  namespace :admin do
+  namespace :gm do
     resource :profile, only: %w[ show ]
   end
 

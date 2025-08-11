@@ -43,3 +43,25 @@ two:
   def: 5
   gold: 10
   exp: 130
+
+gm:
+  user: gm
+  name: Game master
+  level: 1
+  hp: 100
+  atk: 10
+  def: 3
+  gold: 0
+  exp: 0
+
+player:
+  user: player
+  name: Player
+  level: 1
+  hp: 100
+  atk: 10
+  def: 3
+  gold: 0
+  exp: 0
+
+

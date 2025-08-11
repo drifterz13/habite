@@ -15,7 +15,13 @@
 require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "is_gm? given user have game master email address" do
+    user = users(:gm)
+    assert user.is_gm?
+  end
+
+  test "is_gm? given user have player email address" do
+    user = users(:player)
+    refute user.is_gm?
+  end
 end

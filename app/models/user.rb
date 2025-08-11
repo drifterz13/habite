@@ -19,8 +19,9 @@ class User < ApplicationRecord
 
   normalizes :email_address, with: ->(e) { e.strip.downcase }
 
-  def admin?
-    # TODO: Build role management feature.
-    email_address.start_with? "admin"
+  GM_EMAILS = [ "gm1@test.com", "gm2@test.com" ]
+
+  def is_gm?
+    GM_EMAILS.include? email_address
   end
 end

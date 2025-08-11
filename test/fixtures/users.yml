@@ -21,3 +21,12 @@ one:
 two:
   email_address: two@example.com
   password_digest: <%= password_digest %>
+
+gm:
+  email_address: gm1@test.com
+  password_digest: <%= password_digest %>
+
+player:
+  email_address: player1@test.com
+  password_digest: <%= password_digest %>
+

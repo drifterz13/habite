@@ -1,4 +1,19 @@
 namespace :seeder do
+  task game_masters: [ :environment ] do
+    base_stats = { level: 1, hp: 100, exp: 0, atk: 10, def: 8, gold: 10 }
+    emails = [ "gm1@test.com", "gm2@test.com" ]
+
+    emails.each do |email|
+      user = User.new({
+        email_address: email,
+        password: "P@ssw0rd",
+        password_confirmation: "P@ssw0rd"
+      })
+      user.build_player({ name: email.split("@").first }.merge(base_stats))
+      user.save!
+    end
+  end
+
   task gears: [ :environment ]  do
     dir_name = "app/assets/images/gears"
     gear_entries = Dir.entries dir_name

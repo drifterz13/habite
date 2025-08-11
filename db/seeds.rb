@@ -10,9 +10,6 @@
 
 class Seeder
   def seed
-    puts "Creating admins..."
-    @admin1, @admin2 = create_admins
-
     puts "Creating players..."
     @player1, @player2 = create_players
 
@@ -34,13 +31,6 @@ class Seeder
 
   private
 
-  def create_admins
-    User.create!([
-      { email_address: "admin1@test.com", password: "P@ssw0rd", password_confirmation: "P@ssw0rd" },
-      { email_address: "admin2@test.com", password: "P@ssw0rd", password_confirmation: "P@ssw0rd" }
-    ])
-  end
-
   def create_players
     user1, user2 = User.create!([
       { email_address: "player1@test.com", password: "P@ssw0rd", password_confirmation: "P@ssw0rd" },
@@ -50,7 +40,6 @@ class Seeder
     Player.create!([
       { user: user1, name: "player_1", hp: 100, exp: 0, atk: 10, def: 8, gold: 10 },
       { user: user2, name: "player_2", hp: 80, exp: 0, atk: 15, def: 6, gold: 10 }
-
     ])
   end
 

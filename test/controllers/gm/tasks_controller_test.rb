@@ -13,7 +13,7 @@ class Gm::TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create task for quest" do
-    quest = quests(:todo)
+    quest = quests(:without_player)
     post gm_quest_tasks_url(quest), params: {
       task: { title: "Test Task" }
     }

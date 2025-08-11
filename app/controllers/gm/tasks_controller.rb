@@ -11,7 +11,7 @@ class Gm::TasksController < ApplicationController
       if @quest.save
         format.html { redirect_to @quest, notice: "Create quest task successfully." }
       else
-        format.html { render new_gm_quest_tasks_path, alert: "Failed to create quest task." }
+        format.html { render new_gm_quest_task_path(@quest), status: :unprocessable_entity, alert: "Failed to create quest task." }
       end
     end
   end

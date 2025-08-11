@@ -34,7 +34,7 @@
 </article>
 
 <div class="d-flex justify-content-end">
-  <% if @player.is_gm? %>
+  <% if @player.is_gm? && !@quest.has_started_by_some_players? %>
     <%= link_to "Add Tasks", new_gm_quest_task_path(@quest) %>
   <% end %>
 </div>

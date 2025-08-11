@@ -2,7 +2,7 @@ class QuestsController < ApplicationController
   before_action :set_quest, only: %i[ edit update destroy ]
 
   def index
-    @quests = Quest.includes(:tasks).all
+    @quests = Quest.all
     @player = Player.find_by(user: Current.user)
   end
 

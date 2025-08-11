@@ -41,7 +41,7 @@ class Player < ApplicationRecord
   end
 
   def has_started_quest?(quest)
-    quest.owned_by?(self)
+    player_quests.where(quest:).exists?
   end
 
   def start_quest!(quest)

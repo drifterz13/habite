@@ -58,6 +58,10 @@ class Player < ApplicationRecord
     can_complete_task?(task) && player_task.complete
   end
 
+  def completed_task_at(task)
+    player_tasks.find_by(task:)&.completed_at
+  end
+
   def can_complete_task?(task)
     task.in_completable_period? && !task.completed_by?(self)
   end

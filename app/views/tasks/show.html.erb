@@ -20,9 +20,8 @@
       } %>
 
       <% if @player.has_completed_task? @task %>
-        <p class="fw-light fs-6">
-          completed at:
-          <%= time_ago_in_words @player.player_tasks.completed_time_of(@task) %>
+        <p class="text-success">Completed
+          <%= time_ago_in_words(@player.completed_task_at @task) %>
           ago
         </p>
       <% end %>

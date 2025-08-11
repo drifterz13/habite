@@ -123,4 +123,11 @@ class PlayerTest < ActiveSupport::TestCase
 
     assert PlayerTask.find_by(player:, task:).completed?
   end
+
+  test "completed_task_at" do
+    player = players(:one)
+    task = tasks(:in_progress_completed)
+
+    assert_equal player.completed_task_at(task), player_tasks(:in_progress_completed).completed_at
+  end
 end

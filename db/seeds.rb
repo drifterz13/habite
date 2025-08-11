@@ -32,6 +32,8 @@ class Seeder
     create_player_tasks
   end
 
+  private
+
   def create_admins
     User.create!([
       { email_address: "admin1@test.com", password: "P@ssw0rd", password_confirmation: "P@ssw0rd" },
@@ -84,25 +86,19 @@ class Seeder
   def create_gears
     Gear.create!([
       {
-        title: "Iron Sword",
-        description: "A standard-issue sword, reliable in close combat.",
-        atk: 10,
-        def: 2,
-        hp: 0
+        title: "Axe 1",
+        description: "A standard-issue axe, reliable in close combat.",
+        asset_key: "axe_1"
       },
       {
-        title: "Wooden Shield",
-        description: "A simple shield, offering basic protection.",
-        atk: 0,
-        def: 8,
-        hp: 5
+        title: "Helmet 1",
+        description: "A simple helmet, offering basic protection.",
+        asset_key: "helmet_1"
       },
       {
-        title: "Hunter's Bow",
-        description: "A finely crafted bow, favored by agile rangers.",
-        atk: 12,
-        def: 0,
-        hp: 0
+        title: "Sword 1",
+        description: "A finely crafted sword.",
+        asset_key: "sword_1"
       }
     ])
   end

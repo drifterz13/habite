@@ -22,11 +22,11 @@
 #  player_id  (player_id => players.id)
 #
 one:
-  item: sword
+  item: sword_1
   player: one
   equipped: true
 
 two:
-  item: shield
+  item: vest_1
   player: two
   equipped: false

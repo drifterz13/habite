@@ -5,6 +5,7 @@
 # Table name: gears
 #
 #  id          :integer          not null, primary key
+#  asset_key   :string
 #  atk         :integer
 #  def         :integer
 #  description :string
@@ -13,13 +14,29 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-sword:
-  title: Wooden Sword
-  description: Wooden sword for practicing
+sword_1:
+  title: Sword 1
+  description: Basic sword for practicing
+  asset_key: sword_1
   atk: 3
 
-shield:
-  title: Wooden Shield
-  description: Wooden shield for practicing
+vest_1:
+  title: Vest 1
+  description: Basic vest for practicing
+  asset_key: vest_1
   hp: 2
   def: 3
+
+axe_1:
+  title: Axe 1
+  description: Basic Axe tier 1 for practicing
+  atk: 7
+  asset_key: axe_1
+
+helmet_1:
+  title: Helmet 1
+  description: Basic Helmet tier 1 for practicing
+  def: 5
+  hp: 5
+  asset_key: helmet_1
+

@@ -3,6 +3,7 @@
 # Table name: gears
 #
 #  id          :integer          not null, primary key
+#  asset_key   :string
 #  atk         :integer
 #  def         :integer
 #  description :string
@@ -15,13 +16,15 @@ require "test_helper"
 
 class GearTest < ActiveSupport::TestCase
   test "randomize gear" do
-    assert_difference -> { Gear.count }, 1 do
-      Gear.randomize!
-    end
+    available_gears = %w[axe_1 helmet_1]
+
+    rand_gear = Gear.randomize! available_gears
+    assert rand_gear.present?
+    assert_equal rand_gear.class, Gear
   end
 
   test "is_weapon? true, given non formatted gear title" do
-    gear = gears(:sword)
+    gear = gears(:sword_1)
     assert gear.is_weapon?
     refute gear.is_armor?
   end
@@ -39,7 +42,7 @@ class GearTest < ActiveSupport::TestCase
   end
 
   test "is_armor? true, given non formatted gear title" do
-    gear = gears(:shield)
+    gear = gears(:vest_1)
     assert gear.is_armor?
     refute gear.is_weapon?
   end

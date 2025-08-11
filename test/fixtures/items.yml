@@ -10,10 +10,10 @@
 #  updated_at    :datetime         not null
 #  itemable_id   :integer
 #
-sword:
+sword_1:
   itemable_type: Gear
-  itemable: sword
+  itemable: sword_1
 
-shield:
+vest_1:
   itemable_type: Gear
-  itemable: shield
+  itemable: vest_1

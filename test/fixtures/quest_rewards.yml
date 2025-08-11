@@ -32,6 +32,6 @@ exp_reward:
 
 gear_reward:
   quest: completed
-  rewardable: sword
+  rewardable: sword_1
   rewardable_type: Gear
 

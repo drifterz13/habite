@@ -23,10 +23,10 @@ class QuestReward < ApplicationRecord
   belongs_to :rewardable, polymorphic: true
 
   REWARD_TYPES = {
-    "ExpReward": 0.5,
-    "GoldReward": 0.5,
-    "NoneReward": 0.2,
-    "Gear": 0.1
+    "ExpReward": 50,
+    "GoldReward": 50,
+    "NoneReward": 20,
+    "Gear": 10
   }.freeze
 
   def is_exp?
@@ -51,19 +51,19 @@ class QuestReward < ApplicationRecord
 
   private
 
-  def normalized_reward_types
-    weight = REWARD_TYPES.values.sum
-
-    REWARD_TYPES.map do |reward_type, percentage|
-      [ reward_type, (percentage / weight).round(2) ]
-    end.to_h
-  end
-
+  # Distribute rewards in to its own range and check whether
+  # random number falls into which range
   def randomize_reward_type
-    drop_chance = rand
+    items = REWARD_TYPES.keys
+    weights = REWARD_TYPES.values
 
-    normalized_reward_types.find do |reward_type, percentage|
-      reward_type if percentage <= drop_chance
-    end.first
+    random_number = rand weights.sum
+    weight_cumulative = 0
+
+    items.each_with_index do |item, idx|
+      weight_cumulative += weights[idx]
+
+      return item if random_number < weight_cumulative
+    end
   end
 end

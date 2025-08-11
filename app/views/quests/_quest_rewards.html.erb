@@ -9,7 +9,9 @@
           <%= image_tag "icons/exp_up.png", size: "32x32", alt: "exp up icon" %>
           <div class="card-title fw-semibold">Exp +<%= reward.rewardable.amount %></div>
         <% elsif reward.is_gear? %>
-          <%= image_tag "icons/sword_lv1.png", size: "32x32", alt: "gear icon" %>
+          <%= image_tag "gears/#{reward.rewardable.asset_key}.png",
+          size: "32x32",
+          alt: "gear icon" %>
           <div class="card-title fw-semibold"><%= reward.rewardable.title %></div>
         <% end %>
       </div>

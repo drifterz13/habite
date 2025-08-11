@@ -1,0 +1,23 @@
+<% content_for :title, "New tasks" %>
+
+<article class="container">
+  <h1>New tasks</h1>
+
+  <section class="mt-4">
+    <%= form_with model: [@quest, @quest.tasks.build], url: gm_quest_tasks_path(@quest) do |form| %>
+      <div class="mb-3">
+        <%= form.label :title, class: "form-label" %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-control" %>
+      </div>
+
+      <div>
+        <%= form.submit "Add Task", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </section>
+</article>

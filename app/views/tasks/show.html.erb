@@ -1,4 +1,5 @@
 <% content_for :title, "Task #{@task.id}" %>
+<%= render "shared/toast" %>
 
 <%= turbo_frame_tag "task_detail" do %>
   <article class="container">

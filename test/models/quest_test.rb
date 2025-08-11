@@ -14,8 +14,18 @@ require "test_helper"
 
 class QuestTest < ActiveSupport::TestCase
   test "randomize rewards after quest creation" do
-    q = Quest.new title: "My quest"
-    q.save!
+    quest = Quest.new title: "My quest"
+    quest.save!
     assert_operator QuestReward.count, :>=, 0
+  end
+
+  test "has_started_by_some_players? returns true" do
+    quest = quests(:in_progress)
+    assert quest.has_started_by_some_players?
+  end
+
+  test "has_started_by_some_players? returns false" do
+    quest = quests(:without_player)
+    refute quest.has_started_by_some_players?
   end
 end

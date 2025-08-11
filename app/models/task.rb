@@ -25,7 +25,17 @@ class Task < ApplicationRecord
   belongs_to :quest
   has_many :player_tasks, dependent: :destroy
 
+  validate :quest_not_started_by_some_players
+
   def completed_by?(player)
     player_tasks.where(player:).where.not(completed_at: nil).exists?
+  end
+
+  private
+
+  def quest_not_started_by_some_players
+    if quest.has_started_by_some_players?
+      errors.add(:task, "cannot create task for on-going quest")
+    end
   end
 end

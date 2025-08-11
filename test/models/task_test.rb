@@ -23,7 +23,7 @@ require "test_helper"
 
 class TaskTest < ActiveSupport::TestCase
   test "set_default_task_period for unspecify start_at and end_at task" do
-    quest = quests(:todo)
+    quest = quests(:without_player)
     task = Task.create! quest:, title: "My Task"
 
     assert task.start_at.present?
@@ -38,5 +38,20 @@ class TaskTest < ActiveSupport::TestCase
   test "in_completable_period? given task is not in completion period" do
     task = tasks(:completed)
     refute task.in_completable_period?
+  end
+
+  test "quest_not_started_by_some_players should add errors" do
+    quest = quests(:in_progress)
+    task = quest.tasks.build title: "Test Task"
+
+    refute task.valid?
+    assert_includes task.errors[:task], "cannot create task for on-going quest"
+  end
+
+  test "quest_not_started_by_some_players should not add errors" do
+    quest = quests(:without_player)
+    task = quest.tasks.build title: "Test Task"
+
+    assert task.valid?
   end
 end

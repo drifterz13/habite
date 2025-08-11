@@ -33,6 +33,12 @@
   </section>
 </article>
 
+<div class="d-flex justify-content-end">
+  <% if @player.is_gm? %>
+    <%= link_to "Add Tasks", new_gm_quest_task_path(@quest) %>
+  <% end %>
+</div>
+
 <article class="container">
   <h5 class="mb-4">Quest rewards</h5>
 
@@ -41,7 +47,7 @@
   </section>
 </article>
 
-<div class="d-flex justify-content-end mt-4">
+<div class="d-flex justify-content-end">
   <% if @player.has_started_quest?(@quest) %>
     <%= button_to "Complete Quest",
     complete_quest_path(@quest),

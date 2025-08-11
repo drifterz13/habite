@@ -34,6 +34,8 @@ class Player < ApplicationRecord
   has_many :player_tasks, dependent: :destroy
   has_many :tasks, through: :player_tasks
 
+  delegate :is_gm?, to: :user
+
   scope :with_items, ->(player_id) { includes(player_items: :item).find(player_id) }
 
   def equipped_items

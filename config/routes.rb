@@ -3,8 +3,10 @@ Rails.application.routes.draw do
 
   resource :session
   resources :passwords, param: :token
+
+  # TODO: To migrate to corresponding gm or player namepace
   resources :quests do
-    resources :tasks, only: %w[ show new ] do
+    resources :tasks, only: %w[ show ] do
       patch :complete, on: :member, to: "player/task_completions#complete"
     end
 
@@ -14,6 +16,10 @@ Rails.application.routes.draw do
 
   namespace :gm do
     resource :profile, only: %w[ show ]
+
+    resources :quests, only: [] do
+      resources :tasks, only: %i[ new create ]
+    end
   end
 
   namespace :player do

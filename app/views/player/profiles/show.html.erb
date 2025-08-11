@@ -1,0 +1,6 @@
+<h3>User:
+  <%= Current.user.email_address %></h3>
+
+<div class="mt-4">
+  <%= button_to "Sign out", session_path, class: "btn btn-danger", method: :delete %>
+</div>

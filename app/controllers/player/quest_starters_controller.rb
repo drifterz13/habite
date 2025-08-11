@@ -1,4 +1,4 @@
-class Players::QuestStartersController < ApplicationController
+class Player::QuestStartersController < ApplicationController
   def start
     quest = Quest.find params.expect(:id)
 

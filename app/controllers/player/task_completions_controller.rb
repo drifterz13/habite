@@ -1,4 +1,4 @@
-class Players::TaskCompletionsController < ApplicationController
+class Player::TaskCompletionsController < ApplicationController
   def complete
     quest = Quest.find params.expect(:quest_id)
     task = Task.find params.expect(:id)

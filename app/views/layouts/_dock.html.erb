@@ -25,7 +25,8 @@
       <% end %>
     </li>
     <li>
-      <%= link_to root_path, class: "dock_item" do %>
+      <% profile_path = Current.user.admin? ? admin_profile_path : player_profile_path %>
+      <%= link_to profile_path, class: "dock_item" do %>
         <%= image_tag "icons/armor.png", size: "24x24", alt: "armor icon" %>
         Player
       <% end %>

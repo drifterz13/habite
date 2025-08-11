@@ -21,6 +21,6 @@ class User < ApplicationRecord
 
   def admin?
     # TODO: Build role management feature.
-    email_address.start_with "admin"
+    email_address.start_with? "admin"
   end
 end

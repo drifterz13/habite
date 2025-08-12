@@ -47,7 +47,7 @@
   </section>
 </article>
 
-<div class="d-flex justify-content-end">
+<div class="d-flex justify-content-end mt-4">
   <% if @player.has_started_quest?(@quest) %>
     <%= button_to "Complete Quest",
     complete_quest_path(@quest),

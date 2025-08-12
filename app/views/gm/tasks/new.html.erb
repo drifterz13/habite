@@ -1,7 +1,10 @@
 <% content_for :title, "New tasks" %>
 
 <article class="container">
-  <h1>New tasks</h1>
+  <h3 class="d-flex align-items-center gap-2">
+    Create quest's task
+    <%= image_tag "icons/scroll_blue.png", size: "32x32", alt: "blue scrol icon" %>
+  </h3>
 
   <section class="mt-4">
     <%= form_with model: [@quest, @quest.tasks.build], url: gm_quest_tasks_path(@quest) do |form| %>

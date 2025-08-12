@@ -15,7 +15,9 @@
 
   <div class="mb-4">
     <% if @quest.has_ended? %>
-      <p class="text-danger">Quest already end</p>
+      <p class="text-danger">Quest has endend
+        <%= time_ago_in_words(@quest.end_at) %>
+        ago</p>
     <% elsif !@quest.endless? %>
       <p class="text-warning">Quest end in
         <%= distance_of_time_in_words(Time.now, @quest.end_at) %></p>
@@ -57,7 +59,8 @@
   <% else %>
     <%= button_to "Start Quest",
     start_quest_path(@quest),
+    method: :post,
     class: "btn btn-primary",
-    method: :post %>
+    disabled: @quest.has_ended? %>
   <% end %>
 </div>

@@ -11,16 +11,16 @@
     <section>
       <p><%= @task.description %></p>
 
-      <%= button_to "Complete Task",
-      complete_quest_task_path(@task.quest, @task),
-      method: :patch,
-      class: "btn btn-primary",
-      disabled:
-        @player.has_completed_task?(@task) ||
-          !@player.has_started_quest?(@task.quest),
-      data: {
-        turbo_frame: "_top",
-      } %>
+      <% if @player.has_started_quest?(@task.quest) %>
+        <%= button_to "Complete Task",
+        complete_quest_task_path(@task.quest, @task),
+        method: :patch,
+        class: "btn btn-primary",
+        disabled: @player.has_completed_task?(@task),
+        data: {
+          turbo_frame: "_top",
+        } %>
+      <% end %>
 
       <% if @player.has_completed_task? @task %>
         <p class="text-success">Completed

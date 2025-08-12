@@ -32,14 +32,10 @@ class Player < ApplicationRecord
 
   delegate :is_gm?, to: :user
 
-  scope :with_items, ->(player_id) { includes(player_items: :item).find(player_id) }
+  scope :with_items, -> { includes(player_items: [ item: :itemable ]) }
 
   def equipped_items
     player_items.select(&:equipped?)
-  end
-
-  def receive_item!(item)
-    player_items.create!(player: self, item:)
   end
 
   def receive_rewards_from(quest)
@@ -49,8 +45,7 @@ class Player < ApplicationRecord
       elsif reward.is_gold?
         self.gold += reward.rewardable.amount
       elsif reward.is_gear?
-        item = items.create! itemable: reward.rewardable
-        receive_item! item
+        items.create!(itemable: reward.rewardable)
       end
     end
 

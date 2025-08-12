@@ -2,6 +2,7 @@ $dock-height: 78px;
 
 .main_layout {
   height: calc(100vh - $dock-height);
+  overflow-y: scroll;
 }
 
 .dock {

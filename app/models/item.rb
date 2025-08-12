@@ -12,6 +12,7 @@ class Item < ApplicationRecord
   delegated_type :itemable, types: %w[ Gear ], dependent: :destroy
   delegate :title, to: :itemable
   delegate :description, to: :itemable
+  delegate :asset_key, to: :itemable
 
   has_many :owners, through: :player_items, source: :player, dependent: :destroy
 end

@@ -1,6 +1,106 @@
-<h3>User:
-  <%= Current.user.email_address %></h3>
+<article class="container">
+  <section class="mb-4">
+    <div class="d-flex justify-content-between">
+      <%= image_tag "icons/characters/character_01.png",
+      class: "img-thumbnail",
+      size: "48x48",
+      alt: "character icon" %>
 
-<div class="mt-4">
-  <%= button_to "Sign out", session_path, class: "btn btn-danger", method: :delete %>
-</div>
+      <div class="dropdown align-self-start">
+        <button
+          class="btn btn-light dropdown-toggle"
+          type="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
+        >
+          <%= @player.user.email_address %>
+        </button>
+        <ul class="dropdown-menu">
+          <li>
+            <%= link_to "Sign out",
+            session_path,
+            class: "dropdown-item link link-danger",
+            method: :delete,
+            data: {
+              turbo_method: :delete,
+            } %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-4">
+    <div class="mb-3 fs-5 fw-bold text-primary-emphasis">My Stats</div>
+
+    <div class="d-flex gap-2 align-items-center mb-2">
+      <%= image_tag "icons/muscle.png", size: "24x24", alt: "muscle icon" %>
+      <span>
+        <b>Level:</b>
+        <%= @player.level %>
+      </span>
+    </div>
+
+    <div class="d-flex gap-2 align-items-center mb-2">
+      <%= image_tag "icons/gold.png", size: "24x24", alt: "gold icon" %>
+      <span>
+        <b>Gold:</b>
+        <%= @player.gold %>
+      </span>
+    </div>
+
+    <div class="d-flex gap-2 align-items-center mb-2">
+      <%= image_tag "icons/exp.png", size: "24x24", alt: "exp icon" %>
+      <div class="w-100">
+        <span>
+          <b>Exp:</b>
+          <%= "#{@player.exp}/100" %>
+        </span>
+        <div
+          class="progress"
+          role="progressbar"
+          aria-label="exp bar"
+          aria-valuenow="<%= @player.exp %>"
+          aria-valuemin="0"
+          aria-valuemax="100"
+        >
+          <%= content_tag :div, class: "progress-bar", style: "width: #{@player.exp}%;" do %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mb-3 fs-5 fw-bold text-primary-emphasis">My Items</div>
+
+    <% pos_map_item = map_player_items_to_slots(@player.player_items) %>
+    <% total_row = 5 %>
+    <% total_col = 4 %>
+
+    <table class="table table-bordered border-secondary-subtle">
+      <tbody>
+        <% total_row.times.each do |row| %>
+          <tr>
+            <% start_pos = (row * total_col) + 1 %>
+            <% end_pos = start_pos + total_col - 1 %>
+
+            <% (start_pos..end_pos).each do |current_pos| %>
+              <% item = pos_map_item[current_pos] %>
+
+              <td class="text-center bg-warning-subtle">
+                <% unless item.nil? %>
+                  <%= image_tag "gears/#{item.asset_key}.png",
+                  size: "32x32",
+                  alt: "#{item.asset_key.humanize} icon" %>
+                <% else %>
+                  <div style="width: 32px; height: 32px;"></div>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+</article>

@@ -26,7 +26,7 @@ require "test_helper"
 
 class PlayerTest < ActiveSupport::TestCase
   test "should returns equipped items" do
-    player = Player.with_items players(:one).id
+    player = Player.with_items.find players(:one).id
     equipped_items = player.equipped_items
 
     assert_equal 1, equipped_items.size
@@ -104,7 +104,9 @@ class PlayerTest < ActiveSupport::TestCase
     quest = quests(:without_player)
 
     assert_difference -> { PlayerQuest.where(quest:, player:).count }, 1 do
-      player.start_quest!(quest)
+      assert_difference -> { PlayerTask.where(player:).count }, 1 do
+        player.start_quest!(quest)
+      end
     end
   end
 
@@ -131,22 +133,15 @@ class PlayerTest < ActiveSupport::TestCase
     assert_equal player.completed_task_at(task), player_tasks(:in_progress_completed).completed_at
   end
 
-  test "receive_item!" do
-    player = players(:one)
-    item = items(:without_owner)
-
-    assert_difference -> { PlayerItem.where(player:).count }, 1 do
-      player.receive_item! item
-    end
-  end
-
   test "receive_reward_from quest should update player exp, gold and item" do
     player = players(:one)
     quest = quests(:ready_to_complete)
 
     assert_changes -> { player.gold }, from: 0, to: 10 do
       assert_changes -> { player.exp }, from: 0, to: 10 do
-        player.receive_rewards_from quest
+        assert_difference -> { PlayerItem.where(player:).count }, 1 do
+          player.receive_rewards_from quest
+        end
       end
     end
   end

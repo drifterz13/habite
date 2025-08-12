@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_11_054213) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_12_005534) do
   create_table "exp_rewards", force: :cascade do |t|
     t.integer "amount"
     t.datetime "created_at", null: false
@@ -47,6 +47,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_11_054213) do
     t.boolean "equipped"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "pos"
     t.index ["item_id"], name: "index_player_items_on_item_id"
     t.index ["player_id"], name: "index_player_items_on_player_id"
   end

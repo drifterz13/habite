@@ -37,4 +37,23 @@ class Player < ApplicationRecord
   def equipped_items
     player_items.select(&:equipped?)
   end
+
+  def receive_item!(item)
+    player_items.create!(player: self, item:)
+  end
+
+  def receive_rewards_from(quest)
+    quest.rewards.each do |reward|
+      if reward.is_exp?
+        self.exp += reward.rewardable.amount
+      elsif reward.is_gold?
+        self.gold += reward.rewardable.amount
+      elsif reward.is_gear?
+        item = items.create! itemable: reward.rewardable
+        receive_item! item
+      end
+    end
+
+    self.save!
+  end
 end

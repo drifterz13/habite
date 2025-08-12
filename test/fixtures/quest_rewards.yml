@@ -35,3 +35,19 @@ gear_reward:
   rewardable: sword_1
   rewardable_type: Gear
 
+gold_reward_2:
+  quest: ready_to_complete
+  rewardable: ten_gold
+  rewardable_type: GoldReward
+
+exp_reward_2:
+  quest: ready_to_complete
+  rewardable: ten_exp
+  rewardable_type: ExpReward
+
+gear_reward_2:
+  quest: ready_to_complete
+  rewardable: axe_1
+  rewardable_type: Gear
+
+

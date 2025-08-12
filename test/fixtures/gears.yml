@@ -40,3 +40,8 @@ helmet_1:
   hp: 5
   asset_key: helmet_1
 
+without_owner:
+  title: Sword 2
+  description: Basic sword for practicing
+  asset_key: sword_2
+  atk: 13

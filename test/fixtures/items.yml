@@ -17,3 +17,7 @@ sword_1:
 vest_1:
   itemable_type: Gear
   itemable: vest_1
+
+without_owner:
+  itemable_type: Gear
+  itemable: without_owner

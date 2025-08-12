@@ -6,6 +6,7 @@
 #
 #  id         :integer          not null, primary key
 #  equipped   :boolean
+#  pos        :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  item_id    :integer          not null
@@ -24,9 +25,11 @@
 one:
   item: sword_1
   player: one
+  pos: 1
   equipped: true
 
 two:
   item: vest_1
   player: two
+  pos: 1
   equipped: false

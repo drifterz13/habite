@@ -14,6 +14,7 @@
 #
 class Gear < ApplicationRecord
   has_one :item, as: :itemable, touch: true
+  has_many :quest_rewards, as: :rewardable
 
   before_create :set_gear_stats, if: :no_stats?
 

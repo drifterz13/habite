@@ -1,0 +1,32 @@
+// Dark Claude Interface - Dark mode with warm accents
+$primary: #ff8c42; // Bright Orange
+$secondary: #d4a574; // Light Brown
+$success: #6fbc82; // Mint Green
+$danger: #f47068; // Coral Red
+$warning: #f4d03f; // Bright Yellow
+$info: #74b9ff; // Light Blue
+$light: #2c2c2c; // Light Dark
+$dark: #1a1a1a; // Very Dark
+
+// Background colors
+$body-bg: #1a1a1a; // Very Dark Gray
+$body-color: #e8e8e8; // Light Gray
+$card-bg: #2c2c2c; // Dark Gray
+$navbar-bg: #242424; // Darker Gray
+
+// Border and accent colors
+$border-color: #404040;
+$border-width: 2px;
+$border-radius: 0;
+
+// Typography
+$font-family-base: "VT323", monospace;
+$font-family-monospace: "Press Start 2P", cursive;
+$headings-font-family: "Press Start 2P", cursive;
+$headings-color: #ff8c42;
+
+// Component specific
+$btn-border-width: 2px;
+$input-bg: #2c2c2c;
+$input-border-color: #404040;
+$table-dark-bg: #2c2c2c;

@@ -20,6 +20,7 @@
                 data-bs-title="<%= get_item_info(item.itemable) %>"
               >
                 <%= image_tag "gears/#{item.asset_key}.png",
+                class: "pixelated",
                 size: "32x32",
                 alt: "#{item.asset_key.humanize} icon" %>
               </div>

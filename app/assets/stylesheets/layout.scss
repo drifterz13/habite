@@ -1,5 +1,19 @@
 $dock-height: 78px;
 
+.bg-boss-fight {
+  background-color: var(--bs-dark);
+  color: var(--bs-red);
+
+  h1 {
+    font-size: 48px;
+    font-weight: bold;
+  }
+}
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
 .main_layout {
   height: calc(100vh - $dock-height);
   overflow-y: scroll;

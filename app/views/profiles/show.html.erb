@@ -2,7 +2,7 @@
   <section class="mb-4">
     <div class="d-flex justify-content-between">
       <%= image_tag "icons/characters/character_01.png",
-      class: "img-thumbnail",
+      class: "img-thumbnail pixelated",
       size: "48x48",
       alt: "character icon" %>
 
@@ -34,7 +34,10 @@
     <div class="mb-3 fs-5 fw-bold text-primary-emphasis">My Stats</div>
 
     <div class="d-flex gap-2 align-items-center mb-2">
-      <%= image_tag "icons/muscle.png", size: "24x24", alt: "muscle icon" %>
+      <%= image_tag "icons/muscle.png",
+      class: "pixelated",
+      size: "24x24",
+      alt: "muscle icon" %>
       <span>
         <b>Level:</b>
         <%= @player.level %>
@@ -42,7 +45,7 @@
     </div>
 
     <div class="d-flex gap-2 align-items-center mb-2">
-      <%= image_tag "icons/gold.png", size: "24x24", alt: "gold icon" %>
+      <%= image_tag "icons/gold.png", class: "pixelated", size: "24x24", alt: "gold icon" %>
       <span>
         <b>Gold:</b>
         <%= @player.gold %>
@@ -50,7 +53,7 @@
     </div>
 
     <div class="d-flex gap-2 align-items-center mb-2">
-      <%= image_tag "icons/exp.png", size: "24x24", alt: "exp icon" %>
+      <%= image_tag "icons/exp.png", class: "pixelated", size: "24x24", alt: "exp icon" %>
       <div class="w-100">
         <span>
           <b>Exp:</b>

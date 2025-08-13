@@ -35,3 +35,8 @@
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Ignore game assets file
+/app/assets/images/gears
+/app/assets/images/icons
+/app/assets/images/mons

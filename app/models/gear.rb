@@ -8,6 +8,7 @@
 #  def         :integer
 #  description :string
 #  hp          :integer
+#  level       :integer
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -16,6 +17,7 @@ class Gear < ApplicationRecord
   has_one :item, as: :itemable, touch: true
   has_many :quest_rewards, as: :rewardable
 
+  before_create :set_level, if: -> { _1.level.nil? }
   before_create :set_stats, if: :no_stats?
 
   WEAPONS = %w[
@@ -38,9 +40,8 @@ class Gear < ApplicationRecord
     Gear.find_by(asset_key: rand_gear)
   end
 
-  # TODO: Implement proper item level detection
-  def item_lv
-    asset_key.split("_").last.to_i
+  def apply_to(player)
+    player.items.create!(itemable: self)
   end
 
   def is_weapon?
@@ -49,6 +50,10 @@ class Gear < ApplicationRecord
 
   def is_armor?
     ARMORS.include? asset_key
+  end
+
+  def level
+    level ||= asset_key.split("_").last.to_i
   end
 
   private
@@ -62,7 +67,7 @@ class Gear < ApplicationRecord
   end
 
   def rand_stat
-    base_stats = rand(item_lv * STAT_MULTIPLIER)
+    base_stats = rand(level * STAT_MULTIPLIER)
     if is_weapon?
       base_stats
     elsif is_armor?
@@ -83,4 +88,6 @@ class Gear < ApplicationRecord
       self.def = rand_stat
     end
   end
+
+  def set_level = self.level = get_level
 end

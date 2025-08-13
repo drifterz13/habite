@@ -24,8 +24,9 @@ namespace :seeder do
 
     gear_asset_keys.each do |gear_asset_key|
       title = gear_asset_key.humanize
+      level = gear_asset_key.split("_")[1].to_i
 
-      gear = Gear.new(title:, asset_key: gear_asset_key)
+      gear = Gear.new(title:, asset_key: gear_asset_key, level:)
       gear.save!
     end
   end

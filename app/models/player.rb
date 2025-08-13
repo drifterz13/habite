@@ -39,16 +39,6 @@ class Player < ApplicationRecord
   end
 
   def receive_rewards_from(quest)
-    quest.rewards.each do |reward|
-      if reward.is_exp?
-        self.exp += reward.rewardable.amount
-      elsif reward.is_gold?
-        self.gold += reward.rewardable.amount
-      elsif reward.is_gear?
-        items.create!(itemable: reward.rewardable)
-      end
-    end
-
-    self.save!
+    quest.rewards.each { _1.rewardable.apply_to self }
   end
 end

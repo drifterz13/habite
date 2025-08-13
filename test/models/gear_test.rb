@@ -8,6 +8,7 @@
 #  def         :integer
 #  description :string
 #  hp          :integer
+#  level       :integer
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -21,6 +22,15 @@ class GearTest < ActiveSupport::TestCase
     rand_gear = Gear.randomize! available_gears
     assert rand_gear.present?
     assert_equal rand_gear.class, Gear
+  end
+
+  test "apply_to player" do
+    player = players(:one)
+    gear = gears(:without_owner)
+
+    assert_difference -> { PlayerItem.where(player:).count }, 1 do
+      gear.apply_to player
+    end
   end
 
   test "is_weapon? true, given non formatted gear title" do
@@ -39,11 +49,6 @@ class GearTest < ActiveSupport::TestCase
     gear = gears(:vest_1)
     assert gear.is_armor?
     refute gear.is_weapon?
-  end
-
-  test "item_lv returns correctly" do
-    gear = Gear.new title: "Helmet 3", asset_key: "helmet_3", hp: 10, def: 10
-    assert_equal 3, gear.item_lv
   end
 
   test "set_gear_stats" do

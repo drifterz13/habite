@@ -10,6 +10,7 @@
 #  def         :integer
 #  description :string
 #  hp          :integer
+#  level       :integer
 #  title       :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -19,6 +20,7 @@ sword_1:
   description: Basic sword for practicing
   asset_key: sword_1
   atk: 3
+  level: 1
 
 vest_1:
   title: Vest 1
@@ -26,12 +28,14 @@ vest_1:
   asset_key: vest_1
   hp: 2
   def: 3
+  level: 1
 
 axe_1:
   title: Axe 1
   description: Basic Axe tier 1 for practicing
   atk: 7
   asset_key: axe_1
+  level: 1
 
 helmet_1:
   title: Helmet 1
@@ -39,9 +43,11 @@ helmet_1:
   def: 5
   hp: 5
   asset_key: helmet_1
+  level: 1
 
 without_owner:
   title: Sword 2
   description: Basic sword for practicing
   asset_key: sword_2
   atk: 13
+  level: 2

@@ -4,7 +4,7 @@
       <%= link_to quest_task_path(task.quest_id, task.id), data: { turbo_frame: "task_detail" } do %>
         <%= image_tag "icons/task_scroll.png", size: "24x24", alt: "task scroll icon" %>
         <div class="ms-2 me-auto">
-          <div class="fw-semibold text-info-emphasis">
+          <div class="fw-semibold text-info">
             <%= task.title %>
           </div>
           <%= task.description %>

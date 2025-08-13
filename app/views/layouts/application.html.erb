@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-      href="https://fonts.googleapis.com/css2?family=VT323&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap"
       rel="stylesheet"
     >
     <%= stylesheet_link_tag "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" %>
@@ -31,11 +31,7 @@
   </head>
 
   <body>
-    <main
-      class="
-        main_layout container pt-4 px-3 <%= current_page?(boss_fight_path) ? "bg-boss-fight" : "" %>
-      "
-    >
+    <main class=" main_layout container pt-4 px-3 ">
       <%= yield %>
     </main>
     <% unless Current.user.nil? %>

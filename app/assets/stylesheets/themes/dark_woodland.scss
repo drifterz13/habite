@@ -1,0 +1,33 @@
+// Dark Woodland - Muted forest greens in darkness
+$primary: #9acd32; // Yellow Green
+$secondary: #556b2f; // Dark Olive Green
+$success: #32cd32; // Lime Green
+$danger: #8b0000; // Dark Red
+$warning: #daa520; // Goldenrod
+$info: #2e8b57; // Sea Green
+$light: #2f2f2f; // Dark Gray
+$dark: #1c2e1c; // Very Dark Green
+
+// Background colors
+$body-bg: #1c2e1c; // Very Dark Green
+$body-color: #f0fff0; // Honeydew
+$card-bg: #263326; // Dark Forest
+$navbar-bg: #334233; // Darker Forest
+
+// Border and accent colors
+$border-color: #9acd32;
+$border-width: 3px;
+$border-radius: 0;
+
+// Typography
+$font-family-base: "VT323", monospace;
+$font-family-monospace: "Press Start 2P", cursive;
+$headings-font-family: "Press Start 2P", cursive;
+$headings-color: #adff2f; // Green Yellow
+
+// Component specific
+$btn-border-width: 3px;
+$input-bg: #263326;
+$input-border-color: #9acd32;
+$table-dark-bg: #263326;
+$dropdown-bg: $warning;

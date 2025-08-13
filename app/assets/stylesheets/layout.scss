@@ -1,15 +1,5 @@
 $dock-height: 78px;
 
-.bg-boss-fight {
-  background-color: var(--bs-dark);
-  color: var(--bs-red);
-
-  h1 {
-    font-size: 48px;
-    font-weight: bold;
-  }
-}
-
 .pixelated {
   image-rendering: pixelated;
 }
@@ -45,6 +35,6 @@ $dock-height: 78px;
 }
 
 .item-tooltip {
-  --bs-tooltip-bg: var(--bs-purple);
+  --bs-tooltip-bg: var(--bs-warning);
   --bs-tooltip-color: var(--bs-white);
 }

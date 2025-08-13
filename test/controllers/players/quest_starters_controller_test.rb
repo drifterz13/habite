@@ -8,7 +8,7 @@ class QuestStartersControllerTest < ActionDispatch::IntegrationTest
 
   test "should start quest" do
     quest = quests(:without_player)
-    post start_quest_url(quest)
+    post start_player_quest_url(quest)
     assert_redirected_to quests_url
   end
 end

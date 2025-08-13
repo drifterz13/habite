@@ -10,7 +10,7 @@ class TaskCompletionsControllerTest < ActionDispatch::IntegrationTest
     quest = quests(:in_progress)
     task = tasks(:in_progress_todo)
 
-    patch complete_quest_task_url(quest, task)
+    patch complete_player_task_url(task)
 
     assert_redirected_to quest_url(quest)
     assert_equal "Task has been completed", flash[:notice]

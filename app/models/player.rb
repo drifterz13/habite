@@ -23,7 +23,7 @@
 #  user_id  (user_id => users.id)
 #
 class Player < ApplicationRecord
-  include Questable, Taskable
+  include Questable, Taskable, Actionable
 
   belongs_to :user
 

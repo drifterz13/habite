@@ -25,7 +25,6 @@
       <% end %>
     </li>
     <li>
-      <% profile_path = Current.user.is_gm? ? gm_profile_path : player_profile_path %>
       <%= link_to profile_path, class: "dock_item" do %>
         <%= image_tag "icons/armor.png", size: "24x24", alt: "armor icon" %>
         Player

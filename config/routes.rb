@@ -14,16 +14,12 @@ Rails.application.routes.draw do
     post :start, on: :member, to: "player/quest_starters#start"
   end
 
-  namespace :gm do
-    resource :profile, only: %w[ show ]
+  resource :profile, only: %w[ show ]
 
+  namespace :gm do
     resources :quests, only: [] do
       resources :tasks, only: %i[ new create ]
     end
-  end
-
-  namespace :player do
-    resource :profile, only: %w[ show ]
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

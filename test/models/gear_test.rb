@@ -29,12 +29,6 @@ class GearTest < ActiveSupport::TestCase
     refute gear.is_armor?
   end
 
-  test "is_weapon? true, given formatted gear title" do
-    gear = Gear.new title: "crimson_sword_2", atk: 21
-    assert gear.is_weapon?
-    refute gear.is_armor?
-  end
-
   test "is neither armor or weapon" do
     gear = Gear.new title: "Some Gear", atk: 12
     refute gear.is_weapon?
@@ -47,14 +41,30 @@ class GearTest < ActiveSupport::TestCase
     refute gear.is_weapon?
   end
 
-  test "is_armor? true, given formatted gear title" do
-    gear = Gear.new title: "vest_2", hp: 10, def: 10
-    assert gear.is_armor?
-    refute gear.is_weapon?
+  test "item_lv returns correctly" do
+    gear = Gear.new title: "Helmet 3", asset_key: "helmet_3", hp: 10, def: 10
+    assert_equal 3, gear.item_lv
   end
 
-  test "item_lv returns correctly" do
-    gear = Gear.new title: "helmet_3", hp: 10, def: 10
-    assert_equal 3, gear.item_lv
+  test "set_gear_stats" do
+    weapon_gear = Gear.create!(title: "Crimson Sword 3", asset_key: "crimson_sword_3")
+    armor_gear = Gear.create!(title: "Vest 2", asset_key: "vest_2")
+
+    assert_equal weapon_gear.def, 0
+    assert_equal weapon_gear.hp, 0
+    assert_operator weapon_gear.atk, :>, 0
+
+    assert_equal armor_gear.atk, 0
+    assert_operator armor_gear.def, :>, 0
+    assert_operator armor_gear.hp, :>, 0
+  end
+
+  test "not set_gear_stats" do
+    weapon_gear = Gear.create!(title: "Crimson Sword 3", asset_key: "crimson_sword_3", atk: 20)
+    armor_gear = Gear.create!(title: "Vest 2", asset_key: "vest_2", def: 15, hp: 10)
+
+    assert_equal weapon_gear.atk, 20
+    assert_equal armor_gear.def, 15
+    assert_equal armor_gear.hp, 10
   end
 end

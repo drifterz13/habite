@@ -1,0 +1,34 @@
+<% pos_map_item = map_player_items_to_slots(player_items) %>
+
+<table class="table table-bordered border-secondary-subtle">
+  <tbody>
+    <% total_item_slot_row.times.each do |row| %>
+      <tr>
+        <% start_pos = (row * total_item_slot_col) + 1 %>
+        <% end_pos = start_pos + total_item_slot_col - 1 %>
+
+        <% (start_pos..end_pos).each do |current_pos| %>
+          <% item = pos_map_item[current_pos] %>
+
+          <td class="text-center bg-warning-subtle">
+            <% unless item.nil? %>
+              <div
+                data-controller="tooltip"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                data-bs-custom-class="item-tooltip"
+                data-bs-title="<%= get_item_info(item.itemable) %>"
+              >
+                <%= image_tag "gears/#{item.asset_key}.png",
+                size: "32x32",
+                alt: "#{item.asset_key.humanize} icon" %>
+              </div>
+            <% else %>
+              <div style="width: 32px; height: 32px;"></div>
+            <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

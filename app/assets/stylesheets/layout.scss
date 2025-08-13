@@ -29,3 +29,8 @@ $dock-height: 78px;
     justify-content: center;
   }
 }
+
+.item-tooltip {
+  --bs-tooltip-bg: var(--bs-purple);
+  --bs-tooltip-color: var(--bs-white);
+}

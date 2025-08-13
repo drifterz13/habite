@@ -16,12 +16,9 @@
 require "test_helper"
 
 class GearTest < ActiveSupport::TestCase
-  test "randomize gear" do
-    available_gears = %w[axe_1 helmet_1]
-
-    rand_gear = Gear.randomize! available_gears
+  test "randomize! gear" do
+    rand_gear = Gear.randomize!
     assert rand_gear.present?
-    assert_equal rand_gear.class, Gear
   end
 
   test "apply_to player" do

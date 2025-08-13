@@ -27,6 +27,7 @@ class Player < ApplicationRecord
 
   belongs_to :user
 
+  has_many :defeated_monsters, class_name: "Monster"
   has_many :player_items, dependent: :destroy
   has_many :items, through: :player_items
 

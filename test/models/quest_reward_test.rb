@@ -37,8 +37,9 @@ class QuestRewardTest < ActiveSupport::TestCase
   end
 
   test "randomize!" do
-    quest_reward = QuestReward.new quest: quests(:todo)
-    quest_reward.randomize!
-    assert_operator QuestReward.count, :>=, 0
+    quest = quests(:todo)
+    assert_difference -> { QuestReward.where(quest:).count }, 1 do
+      assert QuestReward.new(quest:).randomize!
+    end
   end
 end

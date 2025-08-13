@@ -9,6 +9,8 @@
 #
 class GoldReward < ApplicationRecord
   has_one :quest_reward, as: :rewardable, dependent: :destroy
+  has_one :monster_reward, as: :rewardable, dependent: :destroy
+
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 1 }
 
   MIN_GOLD = 1

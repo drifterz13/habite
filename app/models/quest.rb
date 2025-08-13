@@ -18,7 +18,7 @@ class Quest < ApplicationRecord
   has_many :players, through: :player_quests
   has_many :quest_rewards, dependent: :destroy
 
-  after_create :randomize_rewards
+  after_create :randomize_rewards!
 
   validates :title, length: { maximum: 100 }, presence: true
 
@@ -40,7 +40,7 @@ class Quest < ApplicationRecord
     quest_rewards
   end
 
-  def randomize_rewards
+  def randomize_rewards!
     3.times.each do
       quest_reward = self.quest_rewards.build
       quest_reward.randomize!

@@ -1,0 +1,578 @@
+ [
+  {
+    "title": "Goblin Scout",
+    "description": "A small, weak goblin armed with a crude spear",
+    "level": 1,
+    "atk": 8,
+    "def": 3,
+    "hp": 25,
+    "asset_key": "mons_1"
+  },
+  {
+    "title": "Cave Troll",
+    "description": "A bulky brown troll with massive strength",
+    "level": 2,
+    "atk": 12,
+    "def": 8,
+    "hp": 40,
+    "asset_key": "mons_2"
+  },
+  {
+    "title": "Forest Sprite",
+    "description": "A tiny magical creature with nature powers",
+    "level": 3,
+    "atk": 10,
+    "def": 4,
+    "hp": 20,
+    "asset_key": "mons_3"
+  },
+  {
+    "title": "Orc Warrior",
+    "description": "A fierce green orc wielding a battle axe",
+    "level": 4,
+    "atk": 15,
+    "def": 6,
+    "hp": 35,
+    "asset_key": "mons_4"
+  },
+  {
+    "title": "Armored Knight",
+    "description": "A heavily armored human knight with sword and shield",
+    "level": 5,
+    "atk": 18,
+    "def": 12,
+    "hp": 50,
+    "asset_key": "mons_5"
+  },
+  {
+    "title": "Giant Beetle",
+    "description": "A large insectoid creature with tough carapace",
+    "level": 6,
+    "atk": 14,
+    "def": 10,
+    "hp": 45,
+    "asset_key": "mons_6"
+  },
+  {
+    "title": "Fire Imp",
+    "description": "A small red demon that spits flames",
+    "level": 7,
+    "atk": 16,
+    "def": 5,
+    "hp": 30,
+    "asset_key": "mons_7"
+  },
+  {
+    "title": "Skeletal Archer",
+    "description": "An undead archer with endless arrows",
+    "level": 8,
+    "atk": 20,
+    "def": 6,
+    "hp": 35,
+    "asset_key": "mons_8"
+  },
+  {
+    "title": "Pink Beast",
+    "description": "A strange pink creature with unknown origins",
+    "level": 9,
+    "atk": 18,
+    "def": 8,
+    "hp": 42,
+    "asset_key": "mons_9"
+  },
+  {
+    "title": "Crimson Minotaur",
+    "description": "A powerful bull-headed warrior with massive horns",
+    "level": 10,
+    "atk": 25,
+    "def": 12,
+    "hp": 65,
+    "asset_key": "mons_10"
+  },
+  {
+    "title": "Desert Nomad",
+    "description": "A skilled fighter adapted to harsh desert conditions",
+    "level": 11,
+    "atk": 22,
+    "def": 9,
+    "hp": 55,
+    "asset_key": "mons_11"
+  },
+  {
+    "title": "Green Slime",
+    "description": "A corrosive blob that dissolves armor",
+    "level": 12,
+    "atk": 15,
+    "def": 20,
+    "hp": 80,
+    "asset_key": "mons_12"
+  },
+  {
+    "title": "Toxic Slime",
+    "description": "A poisonous ooze that weakens enemies",
+    "level": 13,
+    "atk": 18,
+    "def": 22,
+    "hp": 85,
+    "asset_key": "mons_13"
+  },
+  {
+    "title": "Swamp Guardian",
+    "description": "A green humanoid protector of wetlands",
+    "level": 14,
+    "atk": 24,
+    "def": 15,
+    "hp": 70,
+    "asset_key": "mons_14"
+  },
+  {
+    "title": "Ancient Treant",
+    "description": "A massive tree-like creature with incredible strength",
+    "level": 15,
+    "atk": 30,
+    "def": 25,
+    "hp": 120,
+    "asset_key": "mons_15"
+  },
+  {
+    "title": "Frost Golem",
+    "description": "A magical construct made of ice and stone",
+    "level": 16,
+    "atk": 28,
+    "def": 20,
+    "hp": 95,
+    "asset_key": "mons_16"
+  },
+  {
+    "title": "Flame Demon",
+    "description": "A burning red devil wreathed in hellfire",
+    "level": 17,
+    "atk": 32,
+    "def": 12,
+    "hp": 75,
+    "asset_key": "mons_17"
+  },
+  {
+    "title": "Bone Wraith",
+    "description": "A ghostly skeleton that phases through attacks",
+    "level": 18,
+    "atk": 26,
+    "def": 18,
+    "hp": 60,
+    "asset_key": "mons_18"
+  },
+  {
+    "title": "Ice Wizard",
+    "description": "A powerful mage wielding frost magic",
+    "level": 19,
+    "atk": 35,
+    "def": 14,
+    "hp": 65,
+    "asset_key": "mons_19"
+  },
+  {
+    "title": "Dark Mage",
+    "description": "A sinister spellcaster commanding shadow magic",
+    "level": 20,
+    "atk": 38,
+    "def": 16,
+    "hp": 70,
+    "asset_key": "mons_20"
+  },
+  {
+    "title": "Shadow Knight",
+    "description": "A corrupted paladin wielding dark powers",
+    "level": 21,
+    "atk": 40,
+    "def": 22,
+    "hp": 90,
+    "asset_key": "mons_21"
+  },
+  {
+    "title": "Goblin Shaman",
+    "description": "A magical goblin with healing and curse abilities",
+    "level": 22,
+    "atk": 34,
+    "def": 18,
+    "hp": 75,
+    "asset_key": "mons_22"
+  },
+  {
+    "title": "Stone Gargoyle",
+    "description": "A winged stone creature that guards ancient places",
+    "level": 23,
+    "atk": 42,
+    "def": 28,
+    "hp": 105,
+    "asset_key": "mons_23"
+  },
+  {
+    "title": "Lightning Elemental",
+    "description": "A being of pure electrical energy",
+    "level": 24,
+    "atk": 45,
+    "def": 15,
+    "hp": 80,
+    "asset_key": "mons_24"
+  },
+  {
+    "title": "Spectral Mage",
+    "description": "A ghostly wizard with otherworldly powers",
+    "level": 25,
+    "atk": 48,
+    "def": 20,
+    "hp": 85,
+    "asset_key": "mons_25"
+  },
+  {
+    "title": "Void Walker",
+    "description": "A mysterious entity from the space between worlds",
+    "level": 26,
+    "atk": 46,
+    "def": 24,
+    "hp": 95,
+    "asset_key": "mons_26"
+  },
+  {
+    "title": "Crystal Guardian",
+    "description": "A magical protector made of living crystal",
+    "level": 27,
+    "atk": 44,
+    "def": 32,
+    "hp": 110,
+    "asset_key": "mons_27"
+  },
+  {
+    "title": "Infernal Beast",
+    "description": "A hellish creature with razor-sharp claws",
+    "level": 28,
+    "atk": 52,
+    "def": 18,
+    "hp": 90,
+    "asset_key": "mons_28"
+  },
+  {
+    "title": "Arcane Sentinel",
+    "description": "A magical construct powered by ancient runes",
+    "level": 29,
+    "atk": 50,
+    "def": 26,
+    "hp": 100,
+    "asset_key": "mons_29"
+  },
+  {
+    "title": "Leviathan Spawn",
+    "description": "A sea monster with tentacles and crushing jaws",
+    "level": 30,
+    "atk": 55,
+    "def": 22,
+    "hp": 120,
+    "asset_key": "mons_30"
+  },
+  {
+    "title": "Nightmare Steed",
+    "description": "A demonic horse wreathed in dark flames",
+    "level": 31,
+    "atk": 58,
+    "def": 20,
+    "hp": 115,
+    "asset_key": "mons_31"
+  },
+  {
+    "title": "Lich King",
+    "description": "An undead sorcerer with mastery over death magic",
+    "level": 32,
+    "atk": 62,
+    "def": 28,
+    "hp": 130,
+    "asset_key": "mons_32"
+  },
+  {
+    "title": "Titan Warrior",
+    "description": "A colossal fighter with immense strength",
+    "level": 33,
+    "atk": 65,
+    "def": 35,
+    "hp": 150,
+    "asset_key": "mons_33"
+  },
+  {
+    "title": "Phoenix Guardian",
+    "description": "A legendary firebird that resurrects from ashes",
+    "level": 34,
+    "atk": 60,
+    "def": 25,
+    "hp": 140,
+    "asset_key": "mons_34"
+  },
+  {
+    "title": "Void Dragon",
+    "description": "A massive dragon that devours light itself",
+    "level": 35,
+    "atk": 70,
+    "def": 30,
+    "hp": 160,
+    "asset_key": "mons_35"
+  },
+  {
+    "title": "Celestial Avatar",
+    "description": "A divine being with heavenly powers",
+    "level": 36,
+    "atk": 68,
+    "def": 32,
+    "hp": 155,
+    "asset_key": "mons_36"
+  },
+  {
+    "title": "Demon Lord",
+    "description": "A powerful archfiend ruling over lesser demons",
+    "level": 37,
+    "atk": 75,
+    "def": 28,
+    "hp": 170,
+    "asset_key": "mons_37"
+  },
+  {
+    "title": "Ancient Wyrm",
+    "description": "An elder dragon with centuries of accumulated power",
+    "level": 38,
+    "atk": 78,
+    "def": 35,
+    "hp": 180,
+    "asset_key": "mons_38"
+  },
+  {
+    "title": "Cosmic Horror",
+    "description": "An incomprehensible entity from beyond reality",
+    "level": 39,
+    "atk": 72,
+    "def": 40,
+    "hp": 175,
+    "asset_key": "mons_39"
+  },
+  {
+    "title": "Abyssal Crawler",
+    "description": "A terrifying spider-like creature from the deep",
+    "level": 40,
+    "atk": 80,
+    "def": 25,
+    "hp": 165,
+    "asset_key": "mons_40"
+  },
+  {
+    "title": "Storm Lord",
+    "description": "A master of wind and lightning magic",
+    "level": 41,
+    "atk": 85,
+    "def": 30,
+    "hp": 190,
+    "asset_key": "mons_41"
+  },
+  {
+    "title": "Shadow Leviathan",
+    "description": "A massive serpentine creature of living darkness",
+    "level": 42,
+    "atk": 88,
+    "def": 32,
+    "hp": 200,
+    "asset_key": "mons_42"
+  },
+  {
+    "title": "Primordial Giant",
+    "description": "An ancient being from the world's creation",
+    "level": 43,
+    "atk": 90,
+    "def": 38,
+    "hp": 210,
+    "asset_key": "mons_43"
+  },
+  {
+    "title": "Ethereal Phantom",
+    "description": "A ghostly entity that exists between dimensions",
+    "level": 44,
+    "atk": 82,
+    "def": 35,
+    "hp": 185,
+    "asset_key": "mons_44"
+  },
+  {
+    "title": "Molten Colossus",
+    "description": "A giant creature of living lava and stone",
+    "level": 45,
+    "atk": 95,
+    "def": 42,
+    "hp": 230,
+    "asset_key": "mons_45"
+  },
+  {
+    "title": "Frost Titan",
+    "description": "A colossal ice giant with freezing attacks",
+    "level": 46,
+    "atk": 92,
+    "def": 45,
+    "hp": 225,
+    "asset_key": "mons_46"
+  },
+  {
+    "title": "Temporal Wraith",
+    "description": "A being that manipulates time and space",
+    "level": 47,
+    "atk": 88,
+    "def": 40,
+    "hp": 205,
+    "asset_key": "mons_47"
+  },
+  {
+    "title": "Draconic Emperor",
+    "description": "The supreme ruler of all dragonkind",
+    "level": 48,
+    "atk": 100,
+    "def": 38,
+    "hp": 240,
+    "asset_key": "mons_48"
+  },
+  {
+    "title": "Void Reaper",
+    "description": "A harbinger of entropy and destruction",
+    "level": 49,
+    "atk": 98,
+    "def": 35,
+    "hp": 235,
+    "asset_key": "mons_49"
+  },
+  {
+    "title": "Nature's Wrath",
+    "description": "A manifestation of the planet's fury",
+    "level": 50,
+    "atk": 95,
+    "def": 48,
+    "hp": 250,
+    "asset_key": "mons_50"
+  },
+  {
+    "title": "Astral Overlord",
+    "description": "A powerful entity ruling the astral plane",
+    "level": 51,
+    "atk": 105,
+    "def": 42,
+    "hp": 260,
+    "asset_key": "mons_51"
+  },
+  {
+    "title": "Chaos Incarnate",
+    "description": "A being of pure chaotic energy",
+    "level": 52,
+    "atk": 108,
+    "def": 40,
+    "hp": 255,
+    "asset_key": "mons_52"
+  },
+  {
+    "title": "Divine Destroyer",
+    "description": "A fallen angel with devastating holy power",
+    "level": 53,
+    "atk": 110,
+    "def": 45,
+    "hp": 270,
+    "asset_key": "mons_53"
+  },
+  {
+    "title": "Nightmare God",
+    "description": "A deity that feeds on fear and despair",
+    "level": 54,
+    "atk": 112,
+    "def": 38,
+    "hp": 265,
+    "asset_key": "mons_54"
+  },
+  {
+    "title": "Reality Breaker",
+    "description": "An entity that warps the fabric of existence",
+    "level": 55,
+    "atk": 115,
+    "def": 50,
+    "hp": 285,
+    "asset_key": "mons_55"
+  },
+  {
+    "title": "Infinite Dragon",
+    "description": "A dragon that exists across multiple dimensions",
+    "level": 56,
+    "atk": 118,
+    "def": 48,
+    "hp": 290,
+    "asset_key": "mons_56"
+  },
+  {
+    "title": "Entropy Lord",
+    "description": "A master of decay and the end of all things",
+    "level": 57,
+    "atk": 120,
+    "def": 45,
+    "hp": 295,
+    "asset_key": "mons_57"
+  },
+  {
+    "title": "Cosmic Devourer",
+    "description": "A massive entity that consumes entire worlds",
+    "level": 58,
+    "atk": 125,
+    "def": 52,
+    "hp": 310,
+    "asset_key": "mons_58"
+  },
+  {
+    "title": "Time Sovereign",
+    "description": "The ultimate master of temporal manipulation",
+    "level": 59,
+    "atk": 128,
+    "def": 48,
+    "hp": 305,
+    "asset_key": "mons_59"
+  },
+  {
+    "title": "Omnipotent Sphinx",
+    "description": "An ancient guardian with infinite wisdom and power",
+    "level": 60,
+    "atk": 130,
+    "def": 55,
+    "hp": 325,
+    "asset_key": "mons_60"
+  },
+  {
+    "title": "Transcendent Being",
+    "description": "An entity that has surpassed mortal limitations",
+    "level": 61,
+    "atk": 135,
+    "def": 50,
+    "hp": 330,
+    "asset_key": "mons_61"
+  },
+  {
+    "title": "Universal Mind",
+    "description": "A collective consciousness spanning galaxies",
+    "level": 62,
+    "atk": 132,
+    "def": 58,
+    "hp": 340,
+    "asset_key": "mons_62"
+  },
+  {
+    "title": "Absolute Zero",
+    "description": "The embodiment of the end of all motion and heat",
+    "level": 63,
+    "atk": 140,
+    "def": 55,
+    "hp": 350,
+    "asset_key": "mons_63"
+  },
+  {
+    "title": "The Final Boss",
+    "description": "The ultimate challenge that tests all skills",
+    "level": 64,
+    "atk": 150,
+    "def": 60,
+    "hp": 400,
+    "asset_key": "mons_64"
+  }
+]

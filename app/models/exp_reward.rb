@@ -9,6 +9,8 @@
 #
 class ExpReward < ApplicationRecord
   has_one :quest_reward, as: :rewardable, dependent: :destroy
+  has_one :monster_reward, as: :rewardable, dependent: :destroy
+
   validates :amount, presence: true, numericality: { greater_than_or_equal_to: 0 }
 
   MIN_EXP = 1

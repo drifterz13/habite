@@ -15,7 +15,9 @@
 #
 class Gear < ApplicationRecord
   has_one :item, as: :itemable, touch: true
+
   has_many :quest_rewards, as: :rewardable
+  has_many :monster_rewards, as: :rewardable
 
   before_create :set_level, if: -> { _1.level.nil? }
   before_create :set_stats, if: :no_stats?
@@ -35,9 +37,8 @@ class Gear < ApplicationRecord
   GEARS = [ WEAPONS, ARMORS ].flatten
   STAT_MULTIPLIER = 8
 
-  def self.randomize!(available_gears = GEARS)
-    rand_gear = available_gears.sample
-    Gear.find_by(asset_key: rand_gear)
+  def self.randomize!
+    Gear.all.sample
   end
 
   def apply_to(player)

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_13_054306) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_13_145507) do
   create_table "exp_rewards", force: :cascade do |t|
     t.integer "amount"
     t.datetime "created_at", null: false
@@ -40,6 +40,30 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_13_054306) do
     t.integer "itemable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "monster_rewards", force: :cascade do |t|
+    t.string "rewardable_type", null: false
+    t.integer "rewardable_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "monster_id", null: false
+    t.index ["monster_id"], name: "index_monster_rewards_on_monster_id"
+    t.index ["rewardable_type", "rewardable_id"], name: "index_monster_rewards_on_rewardable"
+  end
+
+  create_table "monsters", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "atk"
+    t.integer "def"
+    t.integer "hp"
+    t.string "asset_key"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "level", null: false
+    t.integer "player_id"
+    t.index ["player_id"], name: "index_monsters_on_player_id"
   end
 
   create_table "player_items", force: :cascade do |t|
@@ -134,6 +158,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_13_054306) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "monster_rewards", "monsters"
+  add_foreign_key "monsters", "players"
   add_foreign_key "player_items", "items"
   add_foreign_key "player_items", "players"
   add_foreign_key "player_quests", "players"

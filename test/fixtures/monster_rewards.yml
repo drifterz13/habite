@@ -1,0 +1,36 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# == Schema Information
+#
+# Table name: monster_rewards
+#
+#  id              :integer          not null, primary key
+#  rewardable_type :string           not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  monster_id      :integer          not null
+#  rewardable_id   :integer          not null
+#
+# Indexes
+#
+#  index_monster_rewards_on_monster_id  (monster_id)
+#  index_monster_rewards_on_rewardable  (rewardable_type,rewardable_id)
+#
+# Foreign Keys
+#
+#  monster_id  (monster_id => monsters.id)
+#
+gold_reward:
+  monster: champion_tier
+  rewardable: ten_gold
+  rewardable_type: GoldReward
+
+exp_reward:
+  monster: champion_tier
+  rewardable: ten_exp
+  rewardable_type: ExpReward
+
+gear_reward:
+  monster: champion_tier
+  rewardable: sword_1
+  rewardable_type: Gear

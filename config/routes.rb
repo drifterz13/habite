@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   end
 
   namespace :gm do
+    post :spawn_monster, to: "games#spawn_monster"
+
     resources :quests, only: [] do
       resources :tasks, only: %i[ new create ]
     end

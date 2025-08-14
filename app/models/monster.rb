@@ -31,21 +31,22 @@ class Monster < ApplicationRecord
   validates :atk, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :def, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :level, presence: true, numericality: { greater_than: 0, lesser_than_or_equal_to: 64 }
-  validate :can_spawn, on: :create
+  validate :validate_can_spawn, on: :create
 
   scope :defeated, -> { where.not(defeater: nil) }
+  scope :undefeated, -> { where(defeater: nil) }
 
   after_create :randomize_rewards!
 
   def spawn!(level = randomize_monster_level)
     monster = monsters_data.find { _1["level"] == level }
-    self.attributes = monster
-    save!
+    Monster.create! monster
   end
 
-  def can_spawn
-    can_spawn = Monster.defeated.count == Monster.count
-    errors.add(:monster, "cannot spawn new monster when some monsters still alive") unless can_spawn
+  def self.can_spawn? = Monster.defeated.count == Monster.count
+
+  def validate_can_spawn
+    errors.add(:monster, "cannot spawn new monster when some monsters still alive") unless Monster.can_spawn?
   end
 
   def lesser_tier? = (1..20).include? level
@@ -56,6 +57,14 @@ class Monster < ApplicationRecord
     self.defeater = player
     self.save!
   end
+
+  def image_path = "mons/#{asset_key}.png"
+
+  def original_stats
+    monsters_data.find { _1["level"] == self.level }
+  end
+
+  def rewards = monster_rewards
 
   private
 

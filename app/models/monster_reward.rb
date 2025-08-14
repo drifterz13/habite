@@ -21,4 +21,8 @@
 class MonsterReward < ApplicationRecord
   belongs_to :rewardable, polymorphic: true
   belongs_to :monster
+
+  def is_exp? = rewardable.is_a? ExpReward
+  def is_gold? = rewardable.is_a? GoldReward
+  def is_gear? = rewardable.is_a? Gear
 end

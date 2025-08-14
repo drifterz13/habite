@@ -1,14 +1,36 @@
-<article
-  class="
-    container d-flex justify-content-center align-items-center flex-column
-  "
->
-  <h1>Boss Fight</h1>
+<article class="container d-flex align-items-center flex-column h-100">
+  <h3 class="d-flex align-items-center text-danger mb-0">
+    <%= @monster.title %>
+    <%= image_tag "icons/boss.png", class: "pixelated", size: "64x64", alt: "boss icon" %>
+  </h3>
 
-  <section class="mt-4">
-    <%= image_tag "mons/mons_1.png",
-    class: "pixelated",
-    size: "128x128",
-    alt: "monster image" %>
+  <section class="mt-4 w-100 text-center">
+    <% if @monster.present? %>
+      <%= render "games/boss", monster: @monster %>
+    <% else %>
+      <% if @player.is_gm? && Monster.can_spawn? %>
+        <%= button_to "Spawn Monster",
+        gm_spawn_monster_path,
+        method: :post,
+        class: "btn btn-lg btn-primary" %>
+      <% end %>
+    <% end %>
   </section>
+
+  <section class="row w-100">
+    <%= render "games/rewards", rewards: @monster.rewards %>
+  </section>
+
+  <section class="mt-auto mb-4">
+    <div
+      class="d-flex rounded-circle border border-5 border-danger bg-light"
+      style="width: 96px; height: 96px;"
+    >
+      <%= image_tag "icons/sword_atk.png",
+      class: "pixelated m-auto",
+      size: "64x64",
+      alt: "sword attack icon" %>
+    </div>
+  </section>
+
 </article>

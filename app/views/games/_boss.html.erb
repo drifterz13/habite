@@ -1,0 +1,33 @@
+<div>
+  <%= image_tag monster.image_path,
+  class: "pixelated",
+  size: "144x144",
+  alt: "monster image" %>
+</div>
+
+<div class="d-flex flex-column align-items-center mt-2 mb-4">
+  <% original_hp = monster.original_stats["hp"] %>
+  <% hp_percentage = ((100.0 / original_hp.to_f) * monster.hp.to_f).round 2 %>
+
+  <div class="d-flex align-items-center gap-2">
+    <%= image_tag "icons/heart.png", class: "pixelated", size: "24x24", alt: "hear icon" %>
+    <span class="fs-2">
+      <b>HP:</b>
+      <%= "#{monster.hp}/#{original_hp}" %>
+    </span>
+  </div>
+
+  <div class="w-50">
+    <div
+      class="progress"
+      role="progressbar"
+      aria-label="hp bar"
+      aria-valuenow="<%= monster.hp %>"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      <%= content_tag :div, class: "progress-bar", style: "width: #{hp_percentage}%;" do %>
+      <% end %>
+    </div>
+  </div>
+</div>

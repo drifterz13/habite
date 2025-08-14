@@ -29,17 +29,9 @@ class QuestReward < ApplicationRecord
     "Gear": 10
   }.freeze
 
-  def is_exp?
-    rewardable_type == "ExpReward"
-  end
-
-  def is_gold?
-    rewardable_type == "GoldReward"
-  end
-
-  def is_gear?
-    rewardable_type == "Gear"
-  end
+  def is_exp? = rewardable.is_a? ExpReward
+  def is_gold? = rewardable.is_a? GoldReward
+  def is_gear? = rewardable.is_a? Gear
 
   def randomize!
     reward_type = randomize_reward_type.to_s

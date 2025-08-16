@@ -5,6 +5,6 @@ class PagesController < ApplicationController
 
   def boss
     @player = Player.find_by user: Current.user
-    @monster = Monster.includes(monster_rewards: :rewardable).undefeated
+    @monster = Monster.includes(monster_rewards: :rewardable).undefeated.first
   end
 end

@@ -12,4 +12,22 @@ class Player::GamesControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
   end
+
+  test "should show flash message when monster is defeated" do
+    monster = monsters(:lesser_tier)
+    monster.take_damage(monster.hp - 1)
+
+    post attack_monster_url(monster)
+
+    assert_redirected_to boss_fight_url
+    assert_equal "Boss: #{monster.title} is defeated!", flash[:notice]
+  end
+
+  test "should render boss fight page" do
+    monster = Monster.new(id: 1234)
+    post attack_monster_url(monster)
+
+    assert_response :unprocessable_entity
+    assert_routing "/pages/boss", controller: "pages", action: "boss"
+  end
 end

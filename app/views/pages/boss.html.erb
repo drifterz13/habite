@@ -1,11 +1,18 @@
+<% content_for :title, "Raid Boss" %>
+<%= render "shared/toast" %>
+
 <article
   class="container d-flex align-items-center flex-column h-100"
   data-controller="monster"
   data-monster-attacked-state-class="monster_image--attacked"
 >
   <h3 class="d-flex align-items-center text-danger mb-0">
-    <%= @monster.title %>
     <%= image_tag "icons/boss.png", class: "pixelated", size: "64x64", alt: "boss icon" %>
+    <% if @monster.present? %>
+      <%= @monster.title %>
+    <% else %>
+      Wanna raid Boss?
+    <% end %>
   </h3>
 
   <section class="mt-4 w-100 text-center">
@@ -21,22 +28,24 @@
     <% end %>
   </section>
 
-  <section class="row w-100">
-    <%= render "games/rewards", rewards: @monster.rewards %>
-  </section>
+  <% if @monster.present? %>
+    <section class="row w-100">
+      <%= render "games/rewards", rewards: @monster.rewards %>
+    </section>
 
-  <section class="mt-auto mb-4">
-    <%= button_to attack_monster_path(@monster), 
+    <section class="mt-auto mb-4">
+      <%= button_to attack_monster_path(@monster), 
       method: :post, 
       class: "atk-btn rounded-circle", 
       data: { monster_target: "atkButton", action: "click->monster#takeDamage" } do %>
 
-      <div class="d-flex">
-        <%= image_tag "icons/sword_atk.png",
-        class: "pixelated m-auto",
-        size: "64x64",
-        alt: "sword attack icon" %>
-      </div>
-    <% end %>
-  </section>
+        <div class="d-flex">
+          <%= image_tag "icons/sword_atk.png",
+          class: "pixelated m-auto",
+          size: "64x64",
+          alt: "sword attack icon" %>
+        </div>
+      <% end %>
+    </section>
+  <% end %>
 </article>

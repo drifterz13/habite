@@ -1,9 +1,5 @@
 $dock-height: 78px;
 
-.pixelated {
-  image-rendering: pixelated;
-}
-
 .main_layout {
   height: calc(100vh - $dock-height);
   overflow-y: scroll;
@@ -32,9 +28,4 @@ $dock-height: 78px;
     align-items: center;
     justify-content: center;
   }
-}
-
-.item-tooltip {
-  --bs-tooltip-bg: var(--bs-info);
-  --bs-tooltip-color: var(--bs-light);
 }

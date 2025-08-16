@@ -1,4 +1,8 @@
-<article class="container d-flex align-items-center flex-column h-100">
+<article
+  class="container d-flex align-items-center flex-column h-100"
+  data-controller="monster"
+  data-monster-attacked-state-class="monster_image--attacked"
+>
   <h3 class="d-flex align-items-center text-danger mb-0">
     <%= @monster.title %>
     <%= image_tag "icons/boss.png", class: "pixelated", size: "64x64", alt: "boss icon" %>
@@ -22,15 +26,17 @@
   </section>
 
   <section class="mt-auto mb-4">
-    <div
-      class="d-flex rounded-circle border border-5 border-primary bg-light"
-      style="width: 96px; height: 96px;"
-    >
-      <%= image_tag "icons/sword_atk.png",
-      class: "pixelated m-auto",
-      size: "64x64",
-      alt: "sword attack icon" %>
-    </div>
-  </section>
+    <%= button_to attack_monster_path(@monster), 
+      method: :post, 
+      class: "atk-btn rounded-circle", 
+      data: { monster_target: "atkButton", action: "click->monster#takeDamage" } do %>
 
+      <div class="d-flex">
+        <%= image_tag "icons/sword_atk.png",
+        class: "pixelated m-auto",
+        size: "64x64",
+        alt: "sword attack icon" %>
+      </div>
+    <% end %>
+  </section>
 </article>

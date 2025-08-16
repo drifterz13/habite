@@ -42,4 +42,17 @@ class Player < ApplicationRecord
   def receive_rewards_from(quest)
     quest.rewards.each { _1.rewardable.apply_to self }
   end
+
+  def attack(monster)
+    monster.take_damage(damage)
+  end
+
+  private
+
+  def damage
+    dmg_multipler = level * 3
+    min_dmg = atk - (dmg_multipler.to_f / 2.to_f)
+    max_dmg = atk + dmg_multipler
+    rand(min_dmg..max_dmg).round
+  end
 end

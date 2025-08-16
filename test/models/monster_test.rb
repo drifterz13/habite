@@ -100,4 +100,11 @@ class MonsterTest < ActiveSupport::TestCase
     )
     refute monster.valid?
   end
+
+  test "take_damage" do
+    monster = monsters(:champion_tier)
+    assert_difference -> { monster.hp }, -10 do
+      monster.take_damage 10
+    end
+  end
 end

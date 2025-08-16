@@ -34,7 +34,7 @@ class Monster < ApplicationRecord
   validates :level, presence: true, numericality: { greater_than: 0, lesser_than_or_equal_to: 64 }
 
   scope :defeated, -> { where.not(defeater: nil) }
-  scope :undefeated, -> { where(defeater: nil) }
+  scope :undefeated, -> { where(defeater: nil).first }
 
   def lesser_tier? = (1..20).include? level
   def champion_tier? = (21..40).include? level

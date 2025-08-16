@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :monsters, module: "player", only: [] do
+    post :attack, on: :member, to: "games#attack_monster"
+  end
+
   namespace :player do
     resources :quests, only: [] do
       patch :complete, on: :member, to: "quest_completions#complete"

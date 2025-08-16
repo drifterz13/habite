@@ -7,3 +7,48 @@
 body {
   height: 100vh;
 }
+
+.pixelated {
+  image-rendering: pixelated;
+}
+
+.item-tooltip {
+  --bs-tooltip-bg: var(--bs-info);
+  --bs-tooltip-color: var(--bs-light);
+}
+
+.atk-btn {
+  width: 96px;
+  height: 96px;
+  cursor: pointer;
+  border: 5px solid var(--bs-border-color);
+  background-color: var(--bs-light);
+  transition:
+    all 0.15s ease-in-out,
+    background-color 0.15s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: var(--bs-red);
+  }
+}
+
+@keyframes blink {
+  0% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(2);
+  }
+  100% {
+    filter: brightness(1);
+  }
+}
+
+.monster_image {
+  transition: filter 0.1s ease-in-out;
+
+  &--attacked {
+    animation: blink 0.15s linear 2;
+  }
+}

@@ -26,7 +26,7 @@ class QuestReward < ApplicationRecord
     "ExpReward": 50,
     "GoldReward": 50,
     "NoneReward": 20,
-    "Gear": 10
+    "Gear": 50
   }.freeze
 
   def is_exp? = rewardable.is_a? ExpReward

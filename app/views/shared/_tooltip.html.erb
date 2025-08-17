@@ -1,0 +1,10 @@
+<% placement ||= "top" %>
+<div
+  data-controller="tooltip"
+  data-bs-toggle="tooltip"
+  data-bs-placement="<%= placement %>"
+  data-bs-custom-class="item-tooltip"
+  data-bs-title="<%= title %>"
+>
+  <%= yield %>
+</div>

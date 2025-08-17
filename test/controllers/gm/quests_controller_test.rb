@@ -21,7 +21,7 @@ class Gm::QuestsControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy quest" do
     quest = quests(:in_progress)
-    assert_difference -> { QUest.count }, -1 do
+    assert_difference -> { Quest.count }, -1 do
       delete gm_quest_url(quest)
     end
 

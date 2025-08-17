@@ -3,10 +3,10 @@
 
 <%= turbo_frame_tag "task_detail" do %>
   <article class="container">
-    <h4 class="d-flex align-items-center gap-2">
+    <h6 class="d-flex align-items-center gap-2 text-light">
       <%= image_tag "icons/task_scroll.png", size: "24x24", alt: "task scroll icon" %>
       <%= @task.title %>
-    </h4>
+    </h6>
 
     <section>
       <p><%= @task.description %></p>

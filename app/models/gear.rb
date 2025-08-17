@@ -54,7 +54,11 @@ class Gear < ApplicationRecord
   end
 
   def level
-    level ||= asset_key.split("_").last.to_i
+    if persisted?
+      level ||= asset_key.split("_").last.to_i
+    else
+      1
+    end
   end
 
   private
@@ -69,10 +73,12 @@ class Gear < ApplicationRecord
 
   def rand_stat
     base_stats = rand(1..level * STAT_MULTIPLIER)
+
     if is_weapon?
       base_stats
     elsif is_armor?
-      (base_stats / 2.to_f).round 1
+      divider = [ base_stats, STAT_MULTIPLIER ].min.to_f
+      (base_stats / divider).round 1
     end
   end
 

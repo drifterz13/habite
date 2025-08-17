@@ -12,18 +12,12 @@
 
           <td class="text-center bg-primary-subtle">
             <% unless item.nil? %>
-              <div
-                data-controller="tooltip"
-                data-bs-toggle="tooltip"
-                data-bs-placement="top"
-                data-bs-custom-class="item-tooltip"
-                data-bs-title="<%= get_item_info(item.itemable) %>"
-              >
+              <%= render "shared/tooltip", title: get_item_info(item.itemable) do %>
                 <%= image_tag "gears/#{item.asset_key}.png",
                 class: "pixelated",
                 size: "32x32",
                 alt: "#{item.asset_key.humanize} icon" %>
-              </div>
+              <% end %>
             <% else %>
               <div style="width: 32px; height: 32px;"></div>
             <% end %>

@@ -40,3 +40,9 @@
 /app/assets/images/gears
 /app/assets/images/icons
 /app/assets/images/mons
+
+# Except files that used in test files
+!/app/assets/images/icons/heart.png
+!/app/assets/images/icons/boss.png
+!/app/assets/images/icons/sword_atk.png
+!/app/assets/images/mons/mons_31.png

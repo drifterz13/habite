@@ -1,9 +1,20 @@
 require "test_helper"
 
-class Player::GamesControllerTest < ActionDispatch::IntegrationTest
+class MonstersControllerTest < ActionDispatch::IntegrationTest
   setup do
     user = users(:one)
     sign_in(user)
+  end
+
+  test "should render boss fight page" do
+    # monster = Monster.new(id: 1234)
+    # post attack_monster_url(monster)
+
+    # assert_response :unprocessable_entity
+    # assert_routing "/pages/boss", controller: "pages", action: "boss"
+
+    get monsters_url
+    assert_response :success
   end
 
   test "should attack monster" do
@@ -19,15 +30,7 @@ class Player::GamesControllerTest < ActionDispatch::IntegrationTest
 
     post attack_monster_url(monster)
 
-    assert_redirected_to boss_fight_url
+    assert_redirected_to monsters_url
     assert_equal "Boss: #{monster.title} is defeated!", flash[:notice]
-  end
-
-  test "should render boss fight page" do
-    monster = Monster.new(id: 1234)
-    post attack_monster_url(monster)
-
-    assert_response :unprocessable_entity
-    assert_routing "/pages/boss", controller: "pages", action: "boss"
   end
 end

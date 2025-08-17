@@ -45,20 +45,20 @@
   <h5 class="mb-4">Quest rewards</h5>
 
   <section class="row">
-    <%= render "games/rewards", rewards: @quest.rewards %>
+    <%= render "monsters/rewards", rewards: @quest.rewards %>
   </section>
 </article>
 
 <div class="d-flex justify-content-end mt-4">
   <% if @player.has_started_quest?(@quest) %>
     <%= button_to "Complete Quest",
-    complete_player_quest_path(@quest),
+    complete_quest_path(@quest),
     method: :patch,
     class: "btn btn-primary",
     disabled: !@player.can_complete_quest?(@quest) %>
   <% else %>
     <%= button_to "Start Quest",
-    start_player_quest_path(@quest),
+    start_quest_path(@quest),
     method: :post,
     class: "btn btn-primary",
     disabled: @quest.has_ended? %>

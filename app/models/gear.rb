@@ -68,11 +68,11 @@ class Gear < ApplicationRecord
   end
 
   def rand_stat
-    base_stats = rand(level * STAT_MULTIPLIER)
+    base_stats = rand(1..level * STAT_MULTIPLIER)
     if is_weapon?
       base_stats
     elsif is_armor?
-      (base_stats / rand(1.0..2.0)).round 1
+      (base_stats / 2.to_f).round 1
     end
   end
 

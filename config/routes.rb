@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get "pages/home"
+  get "pages/shop"
 
   resource :session
   resources :passwords, param: :token

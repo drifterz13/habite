@@ -26,7 +26,7 @@ Sort of gamify, task management, and in the future to become habit tracking app.
 - [x] Monster / Boss
     - [x]  Damaging boss
     - [x]  Spawning boss
-    - [ ]  Grant boss rewards
+    - [x]  Grant boss rewards
     - [ ]  Monster fight player back
 - [ ] Shopping and trading system
     - [ ]  User can buy items

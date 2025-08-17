@@ -50,7 +50,7 @@ class GearTest < ActiveSupport::TestCase
 
   test "set_gear_stats" do
     weapon_gear = Gear.create!(title: "Crimson Sword 3", asset_key: "crimson_sword_3", level: 3)
-    armor_gear = Gear.create!(title: "Vest 2", asset_key: "vest_2")
+    armor_gear = Gear.create!(title: "Vest 2", asset_key: "vest_2", level: 2)
 
     assert_equal weapon_gear.def, 0
     assert_equal weapon_gear.hp, 0

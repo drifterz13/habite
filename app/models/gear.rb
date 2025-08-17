@@ -19,7 +19,6 @@ class Gear < ApplicationRecord
   has_many :quest_rewards, as: :rewardable
   has_many :monster_rewards, as: :rewardable
 
-  before_create :set_level, if: -> { _1.level.nil? }
   before_create :set_stats, if: :no_stats?
 
   WEAPONS = %w[
@@ -55,16 +54,6 @@ class Gear < ApplicationRecord
 
   private
 
-  def set_level = self.level = default_level
-
-  def default_level
-    if persisted?
-      self.level
-    else
-      self.level || asset_key.split("_").last.to_i
-    end
-  end
-
   def no_stats?
     if is_weapon?
       return self.atk.nil?
@@ -74,7 +63,7 @@ class Gear < ApplicationRecord
   end
 
   def rand_stat
-    base_stats = rand 1..(default_level * STAT_MULTIPLIER)
+    base_stats = rand 1..(self.level * STAT_MULTIPLIER)
 
     if is_weapon?
       base_stats

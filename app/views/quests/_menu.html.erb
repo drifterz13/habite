@@ -14,7 +14,7 @@
   </button>
   <ul class="dropdown-menu text-center">
     <li>
-      <%= link_to quest_path(quest), 
+      <%= link_to gm_quest_path(quest), 
         method: :delete, 
         data: { turbo_method: :delete, turbo_confirm: "Woah! Are you sure?" },
         class: "text-danger text-decoration-none" do %>

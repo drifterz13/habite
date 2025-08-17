@@ -10,7 +10,9 @@
       </u>
     </h3>
 
-    <%= render "menu", quest: @quest %>
+    <% if @player.is_gm? %>
+      <%= render "menu", quest: @quest %>
+    <% end %>
   </div>
 
   <div class="mb-4">

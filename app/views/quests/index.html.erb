@@ -8,12 +8,14 @@
       All Quests
     </h3>
 
-    <div class="flex-shrink-0">
-      <%= link_to new_quest_path, class: "btn btn-primary" do %>
-        <i class="bi bi-plus-lg"></i>
-        Create quest
-      <% end %>
-    </div>
+    <% if @player.is_gm? %>
+      <div class="flex-shrink-0">
+        <%= link_to new_gm_quest_path, class: "btn btn-primary" do %>
+          <i class="bi bi-plus-lg"></i>
+          Create quest
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <section class="mt-4">

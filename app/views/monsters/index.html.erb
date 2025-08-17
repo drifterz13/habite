@@ -17,11 +17,11 @@
 
   <section class="mt-4 w-100 text-center">
     <% if @monster.present? %>
-      <%= render "games/boss", monster: @monster %>
+      <%= render "monsters/boss", monster: @monster %>
     <% else %>
       <% if @player.is_gm? && Monster.can_spawn? %>
         <%= button_to "Spawn Monster",
-        gm_spawn_monster_path,
+        gm_monsters_path,
         method: :post,
         class: "btn btn-lg btn-primary" %>
       <% end %>
@@ -30,7 +30,7 @@
 
   <% if @monster.present? %>
     <section class="row w-100">
-      <%= render "games/rewards", rewards: @monster.rewards %>
+      <%= render "monsters/rewards", rewards: @monster.rewards %>
     </section>
 
     <section class="mt-auto mb-4">

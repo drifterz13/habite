@@ -13,7 +13,7 @@
 
       <% if @player.has_started_quest?(@task.quest) %>
         <%= button_to "Complete Task",
-        complete_player_task_path(@task),
+        complete_quest_task_path(@task.quest, @task),
         method: :patch,
         class: "btn btn-primary",
         disabled: @player.has_completed_task?(@task),

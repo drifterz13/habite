@@ -1,35 +1,34 @@
 Rails.application.routes.draw do
   get "pages/home"
-  get "pages/boss", as: :boss_fight
 
   resource :session
   resources :passwords, param: :token
-  resource :profile, only: %w[ show ]
+  resource :profile, only: %i[show]
 
-  resources :quests do
-    resources :tasks, only: %w[ show ]
+  resources :quests, only: %i[index show] do
+    member do
+      post :start
+      patch :complete
+    end
+
+    resources :tasks, only: %i[show] do
+      member do
+        patch :complete
+      end
+    end
+  end
+
+  resources :monsters, only: %i[index] do
+    member do
+      post :attack
+    end
   end
 
   namespace :gm do
-    post :spawn_monster, to: "games#spawn_monster"
+    resources :monsters, only: %i[new create]
 
-    resources :quests, only: [] do
-      resources :tasks, only: %i[ new create ]
-    end
-  end
-
-  resources :monsters, module: "player", only: [] do
-    post :attack, on: :member, to: "games#attack_monster"
-  end
-
-  namespace :player do
-    resources :quests, only: [] do
-      patch :complete, on: :member, to: "quest_completions#complete"
-      post :start, on: :member, to: "quest_starters#start"
-    end
-
-    resources :tasks, only: [] do
-      patch :complete, on: :member, to: "task_completions#complete"
+    resources :quests, only: %i[new create destroy] do
+      resources :tasks, only: %i[new create]
     end
   end
 

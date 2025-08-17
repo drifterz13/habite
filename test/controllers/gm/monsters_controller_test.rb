@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Gm::GamesControllerTest < ActionDispatch::IntegrationTest
+class Gm::MonstersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:gm)
     sign_in(@user)
@@ -8,19 +8,19 @@ class Gm::GamesControllerTest < ActionDispatch::IntegrationTest
 
   test "should spawn monster and redirect" do
     # defeat remaining monster first before continue
-    monster = monsters(:boss_tier)
-    monster.defeated_by @user.player
+    monsters(:boss_tier).defeated_by @user.player
 
-    post gm_spawn_monster_url
+    post gm_monsters_url
 
-    assert_redirected_to boss_fight_url
+    # get newly spawned monster
+    assert_redirected_to monsters_url
 
     re = /Boss: [\w\s]+ has been spawned!/
     assert_match re, flash[:notice]
   end
 
   test "should not spawn monster and redirect" do
-    post gm_spawn_monster_url
+    post gm_monsters_url
     assert_response :unprocessable_entity
   end
 end

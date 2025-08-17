@@ -40,10 +40,13 @@ class Monster < ApplicationRecord
   def champion_tier? = (21..40).include? level
   def boss_tier? = (41..64).include? level
 
-  # TODO: Handle monster reward drop to player
   def defeated_by(player)
-    self.defeater = player
-    self.save!
+    transaction do
+      self.defeater = player
+      self.save!
+
+      player.receive_rewards_from self
+    end
   end
 
   def take_damage(damage)

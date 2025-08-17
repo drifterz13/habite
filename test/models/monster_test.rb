@@ -32,15 +32,8 @@ class MonsterTest < ActiveSupport::TestCase
     monster.defeated_by player
   end
 
-  test "spawn! monster" do
-    assert_difference -> { Monster.count }, 1 do
-      monster = Monster.new.spawn!
-      assert_operator MonsterReward.where(monster:).count, :>=, 0
-    end
-  end
-
-  test "randomize_rewards! for created monster" do
-    monster = Monster.create!(
+  def gen_monster!
+    Monster.create!(
       "title": "Goblin Scout",
       "description": "A small, weak goblin armed with a crude spear",
       "level": 1,
@@ -49,6 +42,17 @@ class MonsterTest < ActiveSupport::TestCase
       "hp": 25,
       "asset_key": "mons_1"
     )
+  end
+
+  test "spawn! monster" do
+    assert_difference -> { Monster.count }, 1 do
+      monster = Monster.new.spawn!
+      assert_operator MonsterReward.where(monster:).count, :>=, 0
+    end
+  end
+
+  test "randomize_rewards! for created monster" do
+    monster = gen_monster!
     assert_operator MonsterReward.where(monster:).count, :>=, 0
   end
 
@@ -68,27 +72,13 @@ class MonsterTest < ActiveSupport::TestCase
   end
 
   test "can_spawn validation returns true" do
-    monster = Monster.new(
-      "title": "Goblin Scout",
-      "level": 1,
-      "atk": 8,
-      "def": 3,
-      "hp": 25,
-      "asset_key": "mons_1"
-    )
+    monster = gen_monster!
     assert monster.valid?
   end
 
   test "can_spawn validation returns false" do
     # create new undefeated monster
-    Monster.create!(
-      "title": "Goblin Scout",
-      "level": 1,
-      "atk": 8,
-      "def": 3,
-      "hp": 25,
-      "asset_key": "mons_1"
-    )
+    gen_monster!
     # try to create another undefeated monster
     monster = Monster.new(
       "title": "Goblin Scout 2",
@@ -106,5 +96,14 @@ class MonsterTest < ActiveSupport::TestCase
     assert_difference -> { monster.hp }, -10 do
       monster.take_damage 10
     end
+  end
+
+  test "defeated_by" do
+    player = players(:player)
+    monster = gen_monster!
+
+    monster.defeated_by player
+    assert_equal monster.defeater.id, player.id
+    assert (player.exp > 0 or player.gold > 0 or player.items.count > 0)
   end
 end

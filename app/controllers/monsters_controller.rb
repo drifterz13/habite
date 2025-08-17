@@ -14,7 +14,7 @@ class MonstersController < ApplicationController
 
       if @monster.is_dead?
         @monster.defeated_by @player
-        format.html { redirect_to monsters_path, notice: "Boss: #{@monster.title} is defeated!" }
+        format.html { redirect_to monster_rewards_path(@monster), notice: "Boss: #{@monster.title} is defeated!" }
       else
         format.turbo_stream do
           render turbo_stream: turbo_stream.update("boss_hp",

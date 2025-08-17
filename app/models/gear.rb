@@ -53,15 +53,17 @@ class Gear < ApplicationRecord
     ARMORS.include? asset_key
   end
 
-  def level
+  private
+
+  def set_level = self.level = default_level
+
+  def default_level
     if persisted?
-      level ||= asset_key.split("_").last.to_i
+      self.level
     else
-      1
+      self.level || asset_key.split("_").last.to_i
     end
   end
-
-  private
 
   def no_stats?
     if is_weapon?
@@ -72,7 +74,7 @@ class Gear < ApplicationRecord
   end
 
   def rand_stat
-    base_stats = rand(1..level * STAT_MULTIPLIER)
+    base_stats = rand 1..(default_level * STAT_MULTIPLIER)
 
     if is_weapon?
       base_stats
@@ -95,6 +97,4 @@ class Gear < ApplicationRecord
       self.def = rand_stat
     end
   end
-
-  def set_level = self.level = get_level
 end

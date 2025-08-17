@@ -39,8 +39,8 @@ class Player < ApplicationRecord
     player_items.select(&:equipped?)
   end
 
-  def receive_rewards_from(quest)
-    quest.rewards.each { _1.rewardable.apply_to self }
+  def receive_rewards_from(rewarder)
+    rewarder.rewards.each { _1.rewardable.apply_to self }
   end
 
   def attack(monster)

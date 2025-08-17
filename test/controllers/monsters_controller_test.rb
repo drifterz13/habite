@@ -30,7 +30,7 @@ class MonstersControllerTest < ActionDispatch::IntegrationTest
 
     post attack_monster_url(monster)
 
-    assert_redirected_to monsters_url
+    assert_redirected_to monster_rewards_path monster
     assert_equal "Boss: #{monster.title} is defeated!", flash[:notice]
   end
 end

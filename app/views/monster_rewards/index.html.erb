@@ -1,0 +1,14 @@
+<% content_for :title, "Rewards" %>
+
+<%= turbo_frame_tag "monster_rewards" do %>
+  <article class="container">
+    <h6 class="d-flex align-items-center gap-2 text-primary">
+      <%= image_tag "icons/treasure.png", size: "24x24", alt: "monster rewards icon" %>
+      Here's your yummy rewards!
+    </h6>
+
+    <section class="row mt-4">
+      <%= render "shared/rewards", rewards: @monster.rewards %>
+    </section>
+  </article>
+<% end %>

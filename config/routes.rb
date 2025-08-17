@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   end
 
   resources :monsters, only: %i[index] do
+    resources :monster_rewards, only: %i[index], as: :rewards
+
     member do
       post :attack
     end

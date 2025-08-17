@@ -1,0 +1,23 @@
+<div class="d-flex gap-2 align-items-center mb-2">
+  <%= image_tag "icons/heart.png",
+  class: "pixelated",
+  size: "24x24",
+  alt: "heart icon" %>
+  <div class="w-100">
+    <span>
+      <b>HP:</b>
+      <%= "#{player.hp}/100" %>
+    </span>
+    <div
+      class="progress"
+      role="progressbar"
+      aria-label="exp bar"
+      aria-valuenow="<%= player.hp %>"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      <%= content_tag :div, class: "progress-bar bg-danger", style: "width: #{player.hp}%;" do %>
+      <% end %>
+    </div>
+  </div>
+</div>

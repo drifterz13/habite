@@ -1,0 +1,20 @@
+<div class="d-flex gap-2 align-items-center mb-2">
+  <%= image_tag "icons/exp.png", class: "pixelated", size: "24x24", alt: "exp icon" %>
+  <div class="w-100">
+    <span>
+      <b>Exp:</b>
+      <%= "#{player.exp}/100" %>
+    </span>
+    <div
+      class="progress"
+      role="progressbar"
+      aria-label="exp bar"
+      aria-valuenow="<%= player.exp %>"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      <%= content_tag :div, class: "progress-bar", style: "width: #{player.exp}%;" do %>
+      <% end %>
+    </div>
+  </div>
+</div>

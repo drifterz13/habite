@@ -30,47 +30,18 @@
     </div>
   </section>
 
+  <section class="mb-4 d-flex flex-column gap-2 w-75">
+    <%= render "gold", player: @player %>
+    <%= render "hp", player: @player %>
+    <%= render "exp", player: @player %>
+  </section>
+
   <section class="mb-4">
     <div class="mb-3 fs-5 fw-bold text-primary">My Stats</div>
-
-    <div class="d-flex gap-2 align-items-center mb-2">
-      <%= image_tag "icons/muscle.png",
-      class: "pixelated",
-      size: "24x24",
-      alt: "muscle icon" %>
-      <span>
-        <b>Level:</b>
-        <%= @player.level %>
-      </span>
-    </div>
-
-    <div class="d-flex gap-2 align-items-center mb-2">
-      <%= image_tag "icons/gold.png", class: "pixelated", size: "24x24", alt: "gold icon" %>
-      <span>
-        <b>Gold:</b>
-        <%= @player.gold %>
-      </span>
-    </div>
-
-    <div class="d-flex gap-2 align-items-center mb-2">
-      <%= image_tag "icons/exp.png", class: "pixelated", size: "24x24", alt: "exp icon" %>
-      <div class="w-100">
-        <span>
-          <b>Exp:</b>
-          <%= "#{@player.exp}/100" %>
-        </span>
-        <div
-          class="progress"
-          role="progressbar"
-          aria-label="exp bar"
-          aria-valuenow="<%= @player.exp %>"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        >
-          <%= content_tag :div, class: "progress-bar", style: "width: #{@player.exp}%;" do %>
-          <% end %>
-        </div>
-      </div>
+    <div class="d-flex gap-3">
+      <%= render "level", player: @player %>
+      <%= render "atk", player: @player %>
+      <%= render "def", player: @player %>
     </div>
   </section>
 

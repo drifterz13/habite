@@ -4,12 +4,15 @@
 <%= turbo_frame_tag "task_detail" do %>
   <article class="container">
     <h6 class="d-flex align-items-center gap-2 text-light">
-      <%= image_tag "icons/task_scroll.png", size: "24x24", alt: "task scroll icon" %>
+      <%= image_tag "icons/task_scroll.png",
+      class: "align-self-baseline",
+      size: "24x24",
+      alt: "task scroll icon" %>
       <%= @task.title %>
     </h6>
 
     <section>
-      <p><%= @task.description %></p>
+      <p class="text-dark"><%= @task.description %></p>
 
       <% if @player.has_started_quest?(@task.quest) %>
         <%= button_to "Complete Task",

@@ -1,9 +1,9 @@
 class QuestsController < ApplicationController
-  before_action :set_current_player, only: %i[index show start complete]
+  before_action :set_current_player, only: %i[index show start complete compact]
   before_action :set_quest, only: %i[start complete]
 
   def index
-    @quests = Quest.includes(:tasks).all
+    @quests = Quest.limit 10
   end
 
   def show
@@ -29,6 +29,10 @@ class QuestsController < ApplicationController
         format.html { redirect_to quest_path(@quest), alert: "Failed to complete quest" }
       end
     end
+  end
+
+  def compact
+    @quest = Quest.find params.expect(:id)
   end
 
   private

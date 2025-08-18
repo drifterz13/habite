@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :quests, only: %i[index show] do
     member do
+      get :compact
       post :start
       patch :complete
     end

@@ -7,6 +7,12 @@
   </h3>
 
   <section class="mt-4">
-    <%= render "quests/quest_list", quests: @player.quests, player: @player %>
+    <ol class="quest_list list-group">
+      <% @player.quests.each do |quest| %>
+        <%= turbo_frame_tag quest, loading: :lazy, src: compact_quest_path(quest) do %>
+          <%= render "quests/placeholder" %>
+        <% end %>
+      <% end %>
+    </ol>
   </section>
 </article>

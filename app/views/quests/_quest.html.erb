@@ -1,0 +1,26 @@
+<%= turbo_frame_tag quest do %>
+  <li class="quest_list_item list-group-item ">
+    <%= link_to quest_path(quest), data: { turbo_frame: "_top" } do %>
+      <%= image_tag "icons/scroll_blue.png", size: "24x24", alt: "blue scroll icon" %>
+      <div class="ms-2 me-auto">
+        <div class="fw-semibold text-info">
+          <%= quest.title %>
+        </div>
+        <%= quest.description %>
+      </div>
+      <% if !player.has_started_quest?(quest) %>
+        <span class="badge text-bg-secondary rounded-pill">
+          not started
+        </span>
+      <% elsif player.has_completed_quest?(quest) %>
+        <span class="badge text-bg-success rounded-pill">
+          completed
+        </span>
+      <% elsif player.has_started_quest?(quest) %>
+        <span class="badge text-bg-warning rounded-pill">
+          in-progress
+        </span>
+      <% end %>
+    <% end %>
+  </li>
+<% end %>

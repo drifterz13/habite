@@ -38,7 +38,7 @@ two:
   user: two
   name: Milky
   level: 2
-  hp: 129
+  hp: 123
   atk: 13
   def: 5
   gold: 10

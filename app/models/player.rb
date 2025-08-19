@@ -47,6 +47,16 @@ class Player < ApplicationRecord
     monster.take_damage(damage)
   end
 
+  # TODO: Make player able to select their hero.
+  def image_path = "heroes/drawf_1.png"
+
+  # TODO: Adjust based on equipment
+  def original_hp
+    base_hp = 100
+    scale =  level * (level ** (level / 10.0)) * 10
+    base_hp += scale.round
+  end
+
   private
 
   def damage

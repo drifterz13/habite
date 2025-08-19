@@ -145,4 +145,9 @@ class PlayerTest < ActiveSupport::TestCase
       end
     end
   end
+
+  test "original_hp" do
+    player = players(:two)
+    assert_equal player.original_hp, 123
+  end
 end

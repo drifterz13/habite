@@ -18,7 +18,7 @@
     aria-valuemin="0"
     aria-valuemax="100"
   >
-    <%= content_tag :div, class: "progress-bar", style: "width: #{hp_percentage}%;" do %>
+    <%= content_tag :div, class: ["progress-bar", { "bg-success": hp_percentage > 50, "bg-warning": hp_percentage <= 50 }], style: "width: #{hp_percentage}%;" do %>
     <% end %>
   </div>
 </div>

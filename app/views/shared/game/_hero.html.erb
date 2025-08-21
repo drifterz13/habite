@@ -1,0 +1,37 @@
+<div>
+  <%= image_tag player.image_path,
+  class: "pixelated hero_image",
+  size: "144x144",
+  alt: "hero image",
+  data: {
+    action: "animationend->battle#attackDone",
+    battle_target: "hero",
+  } %>
+
+</div>
+
+<div class="d-flex flex-column mt-2 mb-4 w-75">
+  <% hp_percentage = ((100.0 / player.original_hp.to_f) * player.hp.to_f).round 2 %>
+
+  <div class="d-flex align-items-center gap-2">
+    <%= image_tag "icons/heart.png", class: "pixelated", size: "24x24", alt: "hear icon" %>
+    <span class="fs-2">
+      <b>HP:</b>
+      <%= "#{player.hp}/#{player.original_hp}" %>
+    </span>
+  </div>
+
+  <div class="w-100">
+    <div
+      class="progress"
+      role="progressbar"
+      aria-label="hp bar"
+      aria-valuenow="<%= player.hp %>"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      <%= content_tag :div, class: ["progress-bar", { "bg-success": hp_percentage > 50, "bg-warning": hp_percentage <= 50 }], style: "width: #{hp_percentage}%;" do %>
+      <% end %>
+    </div>
+  </div>
+</div>

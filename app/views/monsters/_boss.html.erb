@@ -1,14 +1,14 @@
-<div>
+<div id="boss_hp" class="d-flex flex-column align-items-end w-100 mb-4">
+  <%= render "monsters/boss_hp", monster: monster %>
+</div>
+
+<div class="text-end">
   <%= image_tag monster.image_path,
   class: "pixelated monster_image",
   size: "144x144",
   alt: "monster image",
   data: {
-    action: "animationend->monster#takeDamageDone",
-    monster_target: "image",
+    action: "animationend->battle#takeDamageDone",
+    battle_target: "monster",
   } %>
-</div>
-
-<div id="boss_hp" class="d-flex flex-column align-items-center mt-2 mb-4 w-100">
-  <%= render "monsters/boss_hp", monster: monster %>
 </div>

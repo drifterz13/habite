@@ -3,8 +3,9 @@
 
 <article
   class="container d-flex align-items-center flex-column h-100"
-  data-controller="monster"
-  data-monster-attacked-state-class="monster_image--attacked"
+  data-controller="battle"
+  data-battle-mons-attacked-class="monster_image--attacked"
+  data-battle-hero-attack-class="hero_image--attack"
 >
   <h3 class="d-flex align-items-center text-danger mb-0">
     <%= image_tag "icons/boss.png", class: "pixelated", size: "64x64", alt: "boss icon" %>
@@ -15,9 +16,10 @@
     <% end %>
   </h3>
 
-  <section class="mt-4 w-100 text-center">
+  <section class="mt-5 w-100 text-center">
     <% if @monster.present? %>
       <%= render "monsters/boss", monster: @monster %>
+
     <% else %>
       <% if @player.is_gm? && Monster.can_spawn? %>
         <%= button_to "Spawn Monster",
@@ -33,23 +35,25 @@
   </section>
 
   <% if @monster.present? %>
-    <section class="row w-100">
-      <%= render "shared/rewards", rewards: @monster.rewards %>
-    </section>
-
-    <section class="mt-auto mb-4">
-      <%= button_to attack_monster_path(@monster), 
-      method: :post, 
-      class: "atk-btn rounded-circle", 
-      data: { monster_target: "atkButton", action: "click->monster#takeDamage" } do %>
-
-        <div class="d-flex">
-          <%= image_tag "icons/sword_atk.png",
-          class: "pixelated m-auto",
-          size: "64x64",
-          alt: "sword attack icon" %>
+    <section class="mt-5 w-100">
+      <div class="d-flex justify-content-between">
+        <div class="flex-grow-1">
+          <%= render "shared/game/hero", player: @player %>
         </div>
-      <% end %>
+
+        <%= button_to attack_monster_path(@monster), 
+          method: :post, 
+          class: "atk-btn rounded-circle", 
+          form_class: "align-self-center",
+          data: { battle_target: "atkButton", action: "click->battle#attack" } do %>
+          <div class="d-flex">
+            <%= image_tag "icons/sword_atk.png",
+            class: "pixelated m-auto",
+            size: "64x64",
+            alt: "sword attack icon" %>
+          </div>
+        <% end %>
+      </div>
     </section>
   <% end %>
 </article>

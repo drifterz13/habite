@@ -3,7 +3,7 @@ class MonstersController < ApplicationController
   before_action :ensure_boss_spawned?, only: %i[attack]
 
   def index
-    @monster = Monster.includes(monster_rewards: :rewardable).undefeated.first
+    @monster = Monster.undefeated.first
   end
 
   def attack
